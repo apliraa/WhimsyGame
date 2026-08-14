@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://gmr14ao6klsp"]
+
+[ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_uwrxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ungyi"]
+size = Vector2(305, 211)
+
+[node name="Game" type="Node2D" unique_id=1844573647]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1353093672]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=462844042]
+position = Vector2(625.5, 363.5)
+shape = SubResource("RectangleShape2D_ungyi")
+
+[node name="leaf" parent="." unique_id=1231594342 instance=ExtResource("1_uwrxv")]
+position = Vector2(178, 289)
+
+[node name="leaf2" parent="." unique_id=741246635 instance=ExtResource("1_uwrxv")]
+position = Vector2(1091, 317)
+
+[node name="leaf3" parent="." unique_id=108343077 instance=ExtResource("1_uwrxv")]
+position = Vector2(222, 587)
+
+[node name="leaf4" parent="." unique_id=347624457 instance=ExtResource("1_uwrxv")]
+position = Vector2(1009, 581)
+
+[node name="leaf5" parent="." unique_id=1099047062 instance=ExtResource("1_uwrxv")]
+position = Vector2(611, 132)

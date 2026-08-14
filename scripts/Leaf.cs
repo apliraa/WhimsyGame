@@ -15,7 +15,16 @@ public partial class Leaf : Sprite2D
 	{
 		if (dragging)
 		{
-			GlobalPosition = GetGlobalMousePosition() - offset;
+			//clamp para impedir que as folhas saiam da tela
+			Vector2 posicaoDesejada = GetGlobalMousePosition() - offset;
+
+			Vector2 tamanhoTela = GetViewportRect().Size;
+
+			
+			posicaoDesejada.X = Mathf.Clamp(posicaoDesejada.X, 0, tamanhoTela.X);
+			posicaoDesejada.Y = Mathf.Clamp(posicaoDesejada.Y, 0, tamanhoTela.Y);
+
+			GlobalPosition = posicaoDesejada;
 		}
 	}
 	
