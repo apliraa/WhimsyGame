@@ -4,9 +4,13 @@ using System;
 public partial class Leaf : Sprite2D
 {
 	private bool dragging = false;
-	private Vector2 offset = new Vector2(0,0);
+	private Vector2 offset = Vector2.Zero;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Ready()
+	{
+	   SignalBus.Instance.LeafFocused += OnAnyLeafFocused;
+	}
+
 	public override void _Process(double delta)
 	{
 		if (dragging)
@@ -18,13 +22,21 @@ public partial class Leaf : Sprite2D
 	public void _on_leaf_button_button_down(){
 		dragging = true;
 		offset = GetGlobalMousePosition() - GlobalPosition;
-		GetParent().MoveChild(this, -1);
-		ZIndex += 1;
+		ZIndex = 5;
+
+		SignalBus.Instance.EmitSignal(SignalBus.SignalName.LeafFocused, this);
 	}
 	
 	public void _on_leaf_button_button_up(){
 		dragging = false;
-		ZIndex -=1;
+		
 	}
 	
+	public void OnAnyLeafFocused(Node2D focusedLeaf)
+	{
+		if(focusedLeaf != this)
+		{
+			ZIndex = 0;
+		}
+	}
 }
