@@ -5,10 +5,10 @@
 [node name="Node2D" type="Node2D" unique_id=1114955209]
 
 [node name="leaf" parent="." unique_id=1231594342 instance=ExtResource("1_u8eec")]
-position = Vector2(319, 381)
+position = Vector2(644, 336)
 
 [node name="leaf2" parent="." unique_id=643758190 instance=ExtResource("1_u8eec")]
-position = Vector2(730, 329)
+position = Vector2(462, 509)
 
 [node name="leaf3" parent="." unique_id=758322644 instance=ExtResource("1_u8eec")]
-position = Vector2(515, 531)
+position = Vector2(942, 422)
