@@ -45,7 +45,7 @@ public partial class Leaf : Sprite2D
 	{
 		if(focusedLeaf != this)
 		{
-			ZIndex = 0;
+			ZIndex -= 1;
 		}
 	}
 }
