@@ -16,19 +16,27 @@ public partial class Leaf : Sprite2D
 		if (dragging)
 		{
 			//clamp para impedir que as folhas saiam da tela
-			Vector2 posicaoDesejada = GetGlobalMousePosition() - offset;
+			Vector2 finalPosition = GetGlobalMousePosition() - offset;
 
-			Vector2 tamanhoTela = GetViewportRect().Size;
+			Vector2 screenSize = GetViewportRect().Size;
 
 			
-			posicaoDesejada.X = Mathf.Clamp(posicaoDesejada.X, 0, tamanhoTela.X);
-			posicaoDesejada.Y = Mathf.Clamp(posicaoDesejada.Y, 0, tamanhoTela.Y);
+			finalPosition.X = Mathf.Clamp(finalPosition.X, 0, screenSize.X);
+			finalPosition.Y = Mathf.Clamp(finalPosition.Y, 0, screenSize.Y);
 
-			GlobalPosition = posicaoDesejada;
+			GlobalPosition = finalPosition;
+
+			if (Input.IsActionPressed("right_click"))
+			{
+				RotationDegrees += 1;
+			}
 		}
+
+		
 	}
 	
-	public void _on_leaf_button_button_down(){
+	public void _on_leaf_button_button_down(){	
+
 		dragging = true;
 		offset = GetGlobalMousePosition() - GlobalPosition;
 		ZIndex = 5;
