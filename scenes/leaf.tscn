@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cx8drapduc3dl" path="res://assets/icon.svg" id="1_4r3pj"]
 [ext_resource type="Script" uid="uid://dulqstc3i6fgg" path="res://scripts/Leaf.cs" id="1_wmchb"]
 
-[node name="leaf" type="Node2D" unique_id=1231594342]
+[node name="leaf" type="Node2D" unique_id=1231594342 groups=["Leaf"]]
 
 [node name="leafSprite" type="Sprite2D" parent="." unique_id=1721346388]
 texture = ExtResource("1_4r3pj")
