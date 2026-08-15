@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/leaf.tscn" id="1_leaf"]
+[ext_resource type="Script" path="res://scripts/GamepadController.cs" id="2_gamepad"]
+[ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="3_cursor"]
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("2_gamepad")
+
+[node name="Cursor" parent="." instance=ExtResource("3_cursor")]
+position = Vector2(640, 360)
+
+[node name="Leaves" type="Node2D" parent="."]
+
+[node name="Leaf1" parent="Leaves" instance=ExtResource("1_leaf")]
+position = Vector2(319, 381)
+
+[node name="Leaf2" parent="Leaves" instance=ExtResource("1_leaf")]
+position = Vector2(730, 329)
+
+[node name="Leaf3" parent="Leaves" instance=ExtResource("1_leaf")]
+position = Vector2(515, 531)
