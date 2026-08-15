@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/FormTarget.cs" id="1_form_target"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_target_tall"]
+size = Vector2(128, 384)
+
+[node name="FormTargetTall" type="Area2D" groups=["form_targets", "form_hitboxes"]]
+visible = false
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_form_target")
+
+[node name="Placeholder" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-64, -192, 64, -192, 64, 192, -64, 192)
+color = Color(0.3, 0.45, 0.85, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_target_tall")
