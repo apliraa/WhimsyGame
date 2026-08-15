@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwqc4ao6jsmkw"
-path="res://.godot/imported/button_cloud.png-3d4c79593cc1a17fd4b63e0c1cc25670.ctex"
+uid="uid://b8l1o8hpuqmlg"
+path="res://.godot/imported/cloud_small.png-297d60e9aa0f120d4c17cceeec7b1a86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/button_cloud.png"
-dest_files=["res://.godot/imported/button_cloud.png-3d4c79593cc1a17fd4b63e0c1cc25670.ctex"]
+source_file="res://assets/sprites/Menu/cloud_small.png"
+dest_files=["res://.godot/imported/cloud_small.png-297d60e9aa0f120d4c17cceeec7b1a86.ctex"]
 
 [params]
 
