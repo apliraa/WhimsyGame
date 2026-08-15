@@ -5,7 +5,7 @@
 
 [node name="leaf" type="Node2D" unique_id=1231594342]
 
-[node name="leafSprite" type="Sprite2D" parent="." unique_id=1721346388]
+[node name="leafSprite" type="Sprite2D" parent="." unique_id=1721346388 groups=["leaves"]]
 texture = ExtResource("1_4r3pj")
 script = ExtResource("1_wmchb")
 
