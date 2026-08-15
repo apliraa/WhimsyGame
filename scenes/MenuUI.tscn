@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dm3abe4jq5uot"]
+
+[ext_resource type="Script" uid="uid://b7n2cyroo1vbk" path="res://scripts/menuUI.gd" id="1_811wr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lumdm"]
+font_size = 122
+
+[node name="Control" type="Control" unique_id=302165348]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_811wr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1250807621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32411522, 0.6652055, 0.6706541, 1)
+
+[node name="EquipeNome" type="HBoxContainer" parent="." unique_id=456260761]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.25
+offset_top = -44.0
+offset_right = 99.25
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="EquipeNome" unique_id=1799462083]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Equipe CNTRL'R"
+
+[node name="MainMenu" type="VBoxContainer" parent="." unique_id=867378382]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0007813
+anchor_top = 0.027777778
+anchor_right = 1.0007813
+anchor_bottom = 0.027777778
+offset_left = -1247.0
+offset_top = 30.0
+offset_right = -597.0
+offset_bottom = 602.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="NomeDoJogo" type="Label" parent="MainMenu" unique_id=852933093]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 48
+text = "Beleaf"
+label_settings = SubResource("LabelSettings_lumdm")
+
+[node name="Play" type="Button" parent="." unique_id=1063857656 groups=["Button"]]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 320.0
+text = "Play"
+
+[node name="Credits" type="Button" parent="." unique_id=2114428408 groups=["Button"]]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 352.0
+offset_right = 256.0
+offset_bottom = 416.0
+text = "Credits"
+
+[node name="Quit" type="Button" parent="." unique_id=1744676064 groups=["Button"]]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 544.0
+offset_right = 256.0
+offset_bottom = 608.0
+text = "Quit "
+
+[node name="Options" type="Button" parent="." unique_id=958667342 groups=["Button"]]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 256.0
+offset_bottom = 512.0
+text = "Options"

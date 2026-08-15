@@ -2,10 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dulqstc3i6fgg" path="res://scripts/Leaf.cs" id="1_wmchb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leaf"]
-size = Vector2(128, 128)
-
-[node name="leaf" type="Node2D" unique_id=1231594342]
+[node name="leaf" type="Node2D" unique_id=1231594342 groups=["Leaf"]]
 
 [node name="leafSprite" type="Sprite2D" parent="." unique_id=1721346388 groups=["leaves"]]
 script = ExtResource("1_wmchb")
