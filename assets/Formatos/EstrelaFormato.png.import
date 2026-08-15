@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6cb8s5fwrkf7"
-path="res://.godot/imported/Estrelaf.png-3c6f8528448d5cb6ca33b58c79b1bbb6.ctex"
+uid="uid://ba01gvxywqmbm"
+path="res://.godot/imported/EstrelaFormato.png-c82e1c75ab9c1d654fd4d9a0bd0867d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/Estrelaf.png"
-dest_files=["res://.godot/imported/Estrelaf.png-3c6f8528448d5cb6ca33b58c79b1bbb6.ctex"]
+source_file="res://assets/Formatos/EstrelaFormato.png"
+dest_files=["res://.godot/imported/EstrelaFormato.png-c82e1c75ab9c1d654fd4d9a0bd0867d2.ctex"]
 
 [params]
 

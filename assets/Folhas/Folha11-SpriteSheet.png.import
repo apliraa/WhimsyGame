@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf801w3wfttgq"
-path="res://.godot/imported/Pato.png-353f2fe9a92f6558a8243e19028fd637.ctex"
+uid="uid://jx2gxar3e7bo"
+path="res://.godot/imported/Folha11-SpriteSheet.png-4a16baeaf67ae31a0bcb1d2fe34769c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/Pato.png"
-dest_files=["res://.godot/imported/Pato.png-353f2fe9a92f6558a8243e19028fd637.ctex"]
+source_file="res://assets/Folhas/Folha11-SpriteSheet.png"
+dest_files=["res://.godot/imported/Folha11-SpriteSheet.png-4a16baeaf67ae31a0bcb1d2fe34769c1.ctex"]
 
 [params]
 
