@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceehay1jwupj"
-path="res://.godot/imported/Folha3Placeholder.png-550845058315a57ea9ed6d296727c378.ctex"
+uid="uid://shn6f0xf74oc"
+path="res://.godot/imported/BorboletaFormato.png-1ec445ea2f6aee294991c25606d1192d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Folhas/Folha3Placeholder.png"
-dest_files=["res://.godot/imported/Folha3Placeholder.png-550845058315a57ea9ed6d296727c378.ctex"]
+source_file="res://assets/sprites/Formatos/BorboletaFormato.png"
+dest_files=["res://.godot/imported/BorboletaFormato.png-1ec445ea2f6aee294991c25606d1192d.ctex"]
 
 [params]
 

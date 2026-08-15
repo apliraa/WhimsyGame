@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x6qgxj0i0kpq"
-path="res://.godot/imported/CogumeloFormato.png-52760ddece9f36e28504cac3762f7e5c.ctex"
+uid="uid://bh8pfxo1qg0y1"
+path="res://.godot/imported/Folha9-SpriteSheet.png-7a73a095005c7561c85c96cef4a2a1b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/CogumeloFormato.png"
-dest_files=["res://.godot/imported/CogumeloFormato.png-52760ddece9f36e28504cac3762f7e5c.ctex"]
+source_file="res://assets/sprites/Folhas/Folha9-SpriteSheet.png"
+dest_files=["res://.godot/imported/Folha9-SpriteSheet.png-7a73a095005c7561c85c96cef4a2a1b0.ctex"]
 
 [params]
 

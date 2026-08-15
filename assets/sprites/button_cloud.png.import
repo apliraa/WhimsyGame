@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba01gvxywqmbm"
-path="res://.godot/imported/EstrelaFormato.png-c82e1c75ab9c1d654fd4d9a0bd0867d2.ctex"
+uid="uid://cwqc4ao6jsmkw"
+path="res://.godot/imported/button_cloud.png-3d4c79593cc1a17fd4b63e0c1cc25670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/EstrelaFormato.png"
-dest_files=["res://.godot/imported/EstrelaFormato.png-c82e1c75ab9c1d654fd4d9a0bd0867d2.ctex"]
+source_file="res://assets/sprites/button_cloud.png"
+dest_files=["res://.godot/imported/button_cloud.png-3d4c79593cc1a17fd4b63e0c1cc25670.ctex"]
 
 [params]
 

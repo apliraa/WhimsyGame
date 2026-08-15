@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qu5jwbqj8pur"
-path="res://.godot/imported/Folha2PlaceHolder.png-67550efa4ba79195c533fe23e9aa5eb1.ctex"
+uid="uid://bkdwc1ld80tij"
+path="res://.godot/imported/Folha8-Spritesheet.png-69ae11dcd59aaf8911160e537a25c33a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Folhas/Folha2PlaceHolder.png"
-dest_files=["res://.godot/imported/Folha2PlaceHolder.png-67550efa4ba79195c533fe23e9aa5eb1.ctex"]
+source_file="res://assets/sprites/Folhas/Folha8-Spritesheet.png"
+dest_files=["res://.godot/imported/Folha8-Spritesheet.png-69ae11dcd59aaf8911160e537a25c33a.ctex"]
 
 [params]
 

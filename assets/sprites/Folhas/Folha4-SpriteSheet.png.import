@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1u3o7v7xeiph"
-path="res://.godot/imported/NuvemFormato.png-a7b19dd5670fae4aaedacbec889454ab.ctex"
+uid="uid://d0hpyg2o4hvda"
+path="res://.godot/imported/Folha4-SpriteSheet.png-51bd7773d948dfea308f64b897a0a1a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/NuvemFormato.png"
-dest_files=["res://.godot/imported/NuvemFormato.png-a7b19dd5670fae4aaedacbec889454ab.ctex"]
+source_file="res://assets/sprites/Folhas/Folha4-SpriteSheet.png"
+dest_files=["res://.godot/imported/Folha4-SpriteSheet.png-51bd7773d948dfea308f64b897a0a1a1.ctex"]
 
 [params]
 

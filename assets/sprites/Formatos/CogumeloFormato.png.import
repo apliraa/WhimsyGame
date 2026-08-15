@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://shn6f0xf74oc"
-path="res://.godot/imported/BorboletaFormato.png-b09163842b67915e2f28d1c9ddb5dc8d.ctex"
+uid="uid://x6qgxj0i0kpq"
+path="res://.godot/imported/CogumeloFormato.png-8dd89d98273d01d18a9de7bbcd710445.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/BorboletaFormato.png"
-dest_files=["res://.godot/imported/BorboletaFormato.png-b09163842b67915e2f28d1c9ddb5dc8d.ctex"]
+source_file="res://assets/sprites/Formatos/CogumeloFormato.png"
+dest_files=["res://.godot/imported/CogumeloFormato.png-8dd89d98273d01d18a9de7bbcd710445.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq7720hfhfy5h"
-path="res://.godot/imported/PatoFormato.png-6fd95ca85b1ad7b92f286d0956603af1.ctex"
+uid="uid://ba01gvxywqmbm"
+path="res://.godot/imported/EstrelaFormato.png-7ea285158b4cda8eb0c58efd71de7e1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Formatos/PatoFormato.png"
-dest_files=["res://.godot/imported/PatoFormato.png-6fd95ca85b1ad7b92f286d0956603af1.ctex"]
+source_file="res://assets/sprites/Formatos/EstrelaFormato.png"
+dest_files=["res://.godot/imported/EstrelaFormato.png-7ea285158b4cda8eb0c58efd71de7e1f.ctex"]
 
 [params]
 
