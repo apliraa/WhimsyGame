@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/OutsideTrigger.cs" id="1_outside"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(1280, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(1280, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left"]
+size = Vector2(574, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
+size = Vector2(574, 384)
+
+[node name="OutsideTriggerThree" type="Area2D" groups=["outside_triggers"]]
+visible = false
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_outside")
+
+[node name="Top" type="CollisionShape2D" parent="."]
+position = Vector2(640, 83)
+shape = SubResource("RectangleShape2D_top")
+
+[node name="Bottom" type="CollisionShape2D" parent="."]
+position = Vector2(640, 637)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="Left" type="CollisionShape2D" parent="."]
+position = Vector2(287, 360)
+shape = SubResource("RectangleShape2D_left")
+
+[node name="Right" type="CollisionShape2D" parent="."]
+position = Vector2(993, 360)
+shape = SubResource("RectangleShape2D_right")
