@@ -1,27 +1,23 @@
 [gd_scene format=3 uid="uid://qgjsfwuiu5in"]
 
-[ext_resource type="Texture2D" uid="uid://cx8drapduc3dl" path="res://assets/icon.svg" id="1_4r3pj"]
 [ext_resource type="Script" uid="uid://dulqstc3i6fgg" path="res://scripts/Leaf.cs" id="1_wmchb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leaf"]
+size = Vector2(128, 128)
 
 [node name="leaf" type="Node2D" unique_id=1231594342]
 
 [node name="leafSprite" type="Sprite2D" parent="." unique_id=1721346388 groups=["leaves"]]
-texture = ExtResource("1_4r3pj")
 script = ExtResource("1_wmchb")
+ControllerMoveSpeed = 400.0
 
-[node name="leafButton" type="Button" parent="leafSprite" unique_id=1318251130]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -63.0
-offset_right = -63.0
-offset_bottom = -63.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+[node name="SquarePlaceholder" type="Polygon2D" parent="leafSprite" unique_id=1504786295]
+color = Color(0.25, 0.45, 0.75, 1)
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[connection signal="button_down" from="leafSprite/leafButton" to="leafSprite" method="_on_leaf_button_button_down"]
-[connection signal="button_up" from="leafSprite/leafButton" to="leafSprite" method="_on_leaf_button_button_up"]
+[node name="LeafHitbox" type="Area2D" parent="leafSprite" unique_id=786567579]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leafSprite/LeafHitbox" unique_id=163115931]
+shape = SubResource("RectangleShape2D_leaf")
