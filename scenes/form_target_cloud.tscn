@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/Formatos/NuvemFormato.png" id="1_texture"]
+[ext_resource type="Script" path="res://scripts/FormTarget.cs" id="2_script"]
+
+[node name="FormTargetCloud" type="Area2D" groups=["form_targets", "form_hitboxes"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_script")
+
+[node name="FormatSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_texture")
+texture_filter = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 0
+polygon = PackedVector2Array(163.5, 62.5, 154.0, 71.0, 127.0, 72.0, -144.0, 72.0, -152.0, 68.0, -159.5, 60.5, -165.5, 48.5, -168.5, 37.5, -168.5, 15.5, -166.5, 5.5, -157.5, -11.5, -149.0, -21.0, -137.0, -29.0, -124.0, -34.0, -111.0, -34.0, -79.0, -18.0, -67.0, -16.0, -57.5, -22.5, -41.5, -52.5, -33.0, -61.0, -22.0, -66.0, 7.0, -68.0, 24.0, -60.0, 47.0, -35.0, 65.0, -22.0, 75.0, -21.0, 94.0, -24.0, 126.0, -24.0, 143.0, -13.0, 155.5, -0.5, 168.5, 22.5, 168.5, 49.5)
+
+[node name="CoveragePolygon" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-7.0, -62.0, 10.0, -61.0, 23.0, -54.0, 42.0, -32.0, 64.0, -16.0, 121.0, -18.0, 139.0, -9.0, 147.5, -0.5, 162.5, 24.5, 162.5, 48.5, 155.5, 63.5, -143.0, 66.0, -149.0, 63.0, -154.5, 57.5, -161.5, 41.5, -162.5, 16.5, -156.5, -2.5, -145.0, -17.0, -129.0, -26.0, -112.0, -28.0, -80.0, -12.0, -65.0, -10.0, -60.0, -12.0, -50.5, -22.5, -41.5, -41.5, -31.0, -55.0, -21.0, -60.0)

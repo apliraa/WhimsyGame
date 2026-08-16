@@ -1,20 +1,197 @@
 [gd_scene format=3 uid="uid://qgjsfwuiu5in"]
 
-[ext_resource type="Script" uid="uid://dulqstc3i6fgg" path="res://scripts/Leaf.cs" id="1_wmchb"]
+[ext_resource type="Texture2D" uid="uid://66clnqa3ew1o" path="res://assets/sprites/Folhas/Folha1-SpriteSheet.png" id="1_leaf01_texture"]
+[ext_resource type="Texture2D" uid="uid://cbfj75rhlure5" path="res://assets/sprites/Folhas/Folha2-Spritesheet.png" id="2_leaf02_texture"]
+[ext_resource type="Texture2D" uid="uid://duobvqmun80yj" path="res://assets/sprites/Folhas/Folha3-SpriteSheet.png" id="3_leaf03_texture"]
+[ext_resource type="Texture2D" uid="uid://d0hpyg2o4hvda" path="res://assets/sprites/Folhas/Folha4-SpriteSheet.png" id="4_leaf04_texture"]
+[ext_resource type="Texture2D" uid="uid://k4rfhwrjoje" path="res://assets/sprites/Folhas/Folha5-SpriteSheet.png" id="5_leaf05_texture"]
+[ext_resource type="Texture2D" uid="uid://2djv0exbpcsw" path="res://assets/sprites/Folhas/Folha6-SpriteSheet.png" id="6_leaf06_texture"]
+[ext_resource type="Texture2D" uid="uid://bnh7vxrjedsh3" path="res://assets/sprites/Folhas/Folha7-SpriteSheet.png" id="7_leaf07_texture"]
+[ext_resource type="Texture2D" uid="uid://bkdwc1ld80tij" path="res://assets/sprites/Folhas/Folha8-Spritesheet.png" id="8_leaf08_texture"]
+[ext_resource type="Texture2D" uid="uid://bh8pfxo1qg0y1" path="res://assets/sprites/Folhas/Folha9-SpriteSheet.png" id="9_leaf09_texture"]
+[ext_resource type="Texture2D" uid="uid://crvw2lme16fyk" path="res://assets/sprites/Folhas/Folha10-SpriteSheet.png" id="10_leaf10_texture"]
+[ext_resource type="Texture2D" uid="uid://jx2gxar3e7bo" path="res://assets/sprites/Folhas/Folha11-SpriteSheet.png" id="11_leaf11_texture"]
+[ext_resource type="Script" uid="uid://dulqstc3i6fgg" path="res://scripts/Leaf.cs" id="12_leaf_script"]
 
-[node name="leaf" type="Node2D" unique_id=1231594342 groups=["Leaf"]]
+[node name="Leaves" type="Node2D" unique_id=1666592087]
 
-[node name="leafSprite" type="Sprite2D" parent="." unique_id=1721346388 groups=["leaves"]]
-script = ExtResource("1_wmchb")
+[node name="Leaf01" type="Sprite2D" parent="." unique_id=1729570251 groups=["leaves"]]
+z_index = 1
+texture_filter = 1
+position = Vector2(93, 78)
+texture = ExtResource("1_leaf01_texture")
+hframes = 3
+script = ExtResource("12_leaf_script")
 ControllerMoveSpeed = 400.0
 
-[node name="SquarePlaceholder" type="Polygon2D" parent="leafSprite" unique_id=1504786295]
-color = Color(0.25, 0.45, 0.75, 1)
-polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-
-[node name="LeafHitbox" type="Area2D" parent="leafSprite" unique_id=786567579]
+[node name="LeafHitbox" type="Area2D" parent="Leaf01" unique_id=1293151522]
 collision_layer = 2
 collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leafSprite/LeafHitbox" unique_id=163115931]
-shape = SubResource("RectangleShape2D_leaf")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf01/LeafHitbox" unique_id=114064004]
+position = Vector2(1, 1)
+polygon = PackedVector2Array(2.5, 61, -2, 58.5, 0, 49.5, -2.5, 37, -9.5, 35, -39.5, 34, -42.5, 31, -45.5, 31, -48.5, 28, -81.5, 13, -94, 4.5, -94, 2.5, -89.5, -3, -81.5, -3, -74.5, -6, -65.5, -7, -63.5, -9, -53.5, -10, -51.5, -12, -30.5, -16, -27, -19.5, -24, -28.5, -17, -38.5, -17, -41.5, -10, -55.5, -2.5, -63, 0.5, -63, 5, -58.5, 7, -53.5, 33.5, -17, 54.5, -15, 73.5, -10, 81.5, -10, 90.5, -8, 93, -5.5, 93, -2.5, 88.5, 3, 48.5, 25, 35.5, 30, 29.5, 30, 21.5, 33, 13.5, 33, 11.5, 35, 7.5, 35, 6, 38.5, 8, 51.5, 6, 57.5)
+
+[node name="Leaf02" type="Sprite2D" parent="." unique_id=1643449107 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(72, 167)
+texture = ExtResource("2_leaf02_texture")
+vframes = 3
+frame = 1
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf02" unique_id=404193026]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf02/LeafHitbox" unique_id=808212698]
+polygon = PackedVector2Array(-42, 39.5, -43.5, 37, -34.5, 31, -32.5, 23, -27.5, 13, -20.5, 6, -13.5, -10, -11.5, -21, -16.5, -33, -21.5, -38, -20, -40.5, -14, -40.5, 8, -33.5, 16, -29.5, 21.5, -24, 24, -18.5, 31, -19.5, 35.5, -23, 33.5, -26, 36.5, -28, 36.5, -30, 33.5, -34, 37, -37.5, 42, -38.5, 45.5, -36, 43.5, -32, 45.5, -29, 42.5, -24, 41.5, -18, 37, -13.5, 29.5, -11, 36.5, -1, 37.5, 7, 34.5, 14, 28, 20.5, -18, 35.5)
+
+[node name="Leaf03" type="Sprite2D" parent="." unique_id=1993582916 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(227, 55)
+texture = ExtResource("3_leaf03_texture")
+vframes = 3
+frame = 2
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf03" unique_id=1075244197]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf03/LeafHitbox" unique_id=827398428]
+position = Vector2(1, 1)
+polygon = PackedVector2Array(40, 34.5, 32, 33.5, -18, 14.5, -36, 9.5, -41.5, 4, -42.5, -2, -40.5, -6, -31, -15.5, -27.5, -17, -29.5, -19, -28.5, -28, -31.5, -31, -31.5, -33, -28, -36.5, -25, -35.5, -20.5, -30, -21.5, -23, -20, -21.5, -9, -24.5, 3, -24.5, 14, -20.5, 19.5, -15, 39.5, 23, 41.5, 29, 41.5, 33)
+
+[node name="Leaf04" type="Sprite2D" parent="." unique_id=2098586353 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(366, 56)
+texture = ExtResource("4_leaf04_texture")
+hframes = 3
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf04" unique_id=366059359]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf04/LeafHitbox" unique_id=965179920]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(70, 18.5, 62.5, 23, 52.5, 23, 45.5, 16, 39.5, 15, 24.5, 27, 7.5, 34, -22.5, 35, -42.5, 25, -64, 0.5, -69, -10.5, -60.5, -18, -50.5, -22, -43.5, -23, -30.5, -30, -25.5, -30, -23.5, -32, -8.5, -35, 2.5, -35, 17.5, -27, 24, -20.5, 37, -5.5, 38, -1.5, 44.5, 8, 50.5, 10, 55.5, 16, 60.5, 16, 66.5, 13, 70, 15.5)
+
+[node name="Leaf05" type="Sprite2D" parent="." unique_id=1605165331 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(549, 97)
+texture = ExtResource("5_leaf05_texture")
+vframes = 3
+frame = 1
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf05" unique_id=1410460878]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf05/LeafHitbox" unique_id=1613961296]
+polygon = PackedVector2Array(63.5, 26, 60, 28.5, 57, 24.5, 52, 23.5, 17, 36.5, -1, 39.5, -13, 38.5, -27, 33.5, -37, 28.5, -49.5, 16, -57.5, 0, -62.5, -15, -64.5, -23, -64.5, -33, -63, -34.5, -60, -31.5, -53, -30.5, -24, -38.5, -10, -37.5, 5, -33.5, 13, -29.5, 19.5, -23, 26.5, -9, 31.5, 8, 37.5, 20, 42, 21.5, 51, 16.5, 55, 16.5, 62.5, 22)
+
+[node name="Leaf06" type="Sprite2D" parent="." unique_id=486198204 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(117, 268)
+texture = ExtResource("6_leaf06_texture")
+hframes = 3
+frame = 2
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf06" unique_id=2001119955]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf06/LeafHitbox" unique_id=253411678]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-51, 37.5, -54.5, 32, -49, 26.5, -42, 24.5, -38.5, 20, -30.5, -2, -29.5, -10, -26.5, -17, -22, -21.5, -18, -21.5, -6, -28.5, 6, -31.5, 22, -31.5, 34, -24.5, 37, -24.5, 39, -27.5, 49.5, -23, 49.5, -20, 53.5, -15, 50, -11.5, 45, -11.5, 42, -17.5, 39.5, -15, 32.5, 12, 21, 26.5, 7, 32.5, -3, 33.5, -19, 33.5, -22, 31.5, -34, 29.5, -41, 31.5)
+
+[node name="Leaf07" type="Sprite2D" parent="." unique_id=1270188724 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(542, 216)
+texture = ExtResource("7_leaf07_texture")
+vframes = 3
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf07" unique_id=2050369810]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf07/LeafHitbox" unique_id=280143296]
+position = Vector2(0, 2)
+polygon = PackedVector2Array(-64.5, 25, -61, 20.5, -58, 20.5, -43.5, 12, -43.5, 6, -40.5, -2, -37.5, -7, -27, -17.5, -3, -29.5, 3, -30.5, 12, -27.5, 25, -20.5, 41, -14.5, 55, -21.5, 58.5, -19, 58.5, -16, 55, -12.5, 41.5, -5, 36.5, 3, 33.5, 12, 17, 28.5, 9, 32.5, 1, 34.5, -13, 33.5, -35, 24.5, -40, 19.5, -59, 28.5, -61, 28.5)
+
+[node name="Leaf08" type="Sprite2D" parent="." unique_id=843569104 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(201, 299)
+texture = ExtResource("8_leaf08_texture")
+hframes = 3
+frame = 1
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf08" unique_id=1271506696]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf08/LeafHitbox" unique_id=2054664418]
+position = Vector2(1, 1)
+polygon = PackedVector2Array(15, 48, 10, 48, 5.5, 43.5, -5.5, 25.5, -23.5, 1.5, -23.5, -7.5, -21.5, -9.5, -21.5, -15.5, -19.5, -19.5, -12.5, -25.5, -14.5, -42.5, -13.5, -46.5, -11, -49, -8, -49, -4.5, -44.5, -4.5, -28.5, 5, -28, 11, -25, 21.5, -12.5, 19.5, 1.5, 19.5, 38.5, 17.5, 45.5)
+
+[node name="Leaf09" type="Sprite2D" parent="." unique_id=967389972 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(313, 222)
+texture = ExtResource("9_leaf09_texture")
+hframes = 3
+frame = 2
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf09" unique_id=583254451]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf09/LeafHitbox" unique_id=1815787421]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(60, 20, 55.5, 22.5, 41.5, 17.5, 26.5, 19.5, 21.5, 15.5, 17.5, 18.5, 5.5, 18.5, -30.5, 10.5, -37.5, 10.5, -39.5, 8.5, -54.5, 11.5, -61, 3, -61, 0, -47.5, -15.5, -44.5, -15.5, -35.5, -22.5, -23.5, -25.5, -6.5, -25.5, 3.5, -22.5, 19, -10, 27.5, 11.5, 35.5, 9.5, 50.5, 11.5, 52.5, 13.5, 57.5, 13.5, 60, 17)
+
+[node name="Leaf10" type="Sprite2D" parent="." unique_id=111957892 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(506, 313)
+texture = ExtResource("10_leaf10_texture")
+vframes = 3
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf10" unique_id=2090797444]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf10/LeafHitbox" unique_id=1516833167]
+polygon = PackedVector2Array(55.5, 39, 51, 42.5, 44, 42.5, 30, 34.5, 25, 39.5, 11, 43.5, -18, 43.5, -28, 42.5, -36, 38.5, -48.5, 26, -52.5, 17, -56.5, 0, -56.5, -16, -51.5, -40, -49, -41.5, -42, -36.5, -23, -30.5, 19, -9.5, 29.5, 1, 33.5, 8, 35.5, 14, 34.5, 28, 46, 35.5, 52, 33.5, 55.5, 37)
+
+[node name="Leaf11" type="Sprite2D" parent="." unique_id=1930441467 groups=["leaves"]]
+texture_filter = 1
+position = Vector2(422, 212)
+texture = ExtResource("11_leaf11_texture")
+hframes = 3
+frame = 1
+script = ExtResource("12_leaf_script")
+ControllerMoveSpeed = 400.0
+
+[node name="LeafHitbox" type="Area2D" parent="Leaf11" unique_id=827063692]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf11/LeafHitbox" unique_id=160154825]
+position = Vector2(2, 1)
+polygon = PackedVector2Array(34, 6.5, 31.5, 9, 29.5, 9, 25.5, 5, 22.5, 8, 15.5, 8, 14, 12.5, 8.5, 18, 4.5, 19, -9.5, 19, -22.5, 16, -32, 3.5, -33, -2.5, -29, -5.5, -29, -8.5, -35, -10.5, -35, -17.5, -32.5, -20, -29.5, -20, -18.5, -14, 5.5, -10, 12, -4.5, 15.5, 1, 19.5, 1, 23.5, -3, 28.5, -3, 33, 2.5)

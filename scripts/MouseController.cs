@@ -5,13 +5,16 @@ public partial class MouseController : Node
 {
 	private readonly List<Leaf> leaves = new();
 	private GamepadCursor gamepadCursor;
+	private PhaseController phaseController;
 	private Leaf controlledLeaf;
 	private Vector2 mouseOffset;
 	private Vector2 previousMousePosition;
+	private bool waitForMouseRelease;
 
 	public override void _Ready()
 	{
 		gamepadCursor = GetNode<GamepadCursor>("../Cursor");
+		phaseController = GetNodeOrNull<PhaseController>("../PhaseController");
 		previousMousePosition = GetViewport().GetMousePosition();
 
 		foreach (Node node in GetTree().GetNodesInGroup("leaves"))
@@ -32,6 +35,30 @@ public partial class MouseController : Node
 		if (leftPressed || rightPressed || mousePosition.DistanceTo(previousMousePosition) > 0.1f)
 		{
 			gamepadCursor.Visible = false;
+		}
+
+		if (phaseController != null && phaseController.IsTransitioning)
+		{
+			if (controlledLeaf != null)
+			{
+				controlledLeaf.EndMouseControl();
+				controlledLeaf = null;
+			}
+
+			waitForMouseRelease = true;
+			previousMousePosition = mousePosition;
+			return;
+		}
+
+		if (waitForMouseRelease)
+		{
+			if (!leftPressed && !rightPressed)
+			{
+				waitForMouseRelease = false;
+			}
+
+			previousMousePosition = mousePosition;
+			return;
 		}
 
 		if (controlledLeaf == null && (leftPressed || rightPressed))
