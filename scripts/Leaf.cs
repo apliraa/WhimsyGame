@@ -46,6 +46,8 @@ public partial class Leaf : Sprite2D
 			leafHitbox.AreaEntered -= OnLeafHitboxAreaEntered;
 			leafHitbox.AreaExited -= OnLeafHitboxAreaExited;
 		}
+
+		
 	}
 
 	public void BeginControllerControl()
@@ -208,7 +210,7 @@ public partial class Leaf : Sprite2D
 	{
 		if (focusedLeaf != this && !mouseControlled && !controllerControlled)
 		{
-			ZIndex = 0;
+			ZIndex -= 1;
 		}
 	}
 
