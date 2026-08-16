@@ -35,7 +35,7 @@ fill = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_b"]
 shader = ExtResource("22_cloud_shader")
-shader_parameter/pixelation = Vector2(1280, 720)
+shader_parameter/pixelation = Vector2(640, 360)
 shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_cloud_c")
 shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
 shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_d")
@@ -49,10 +49,19 @@ shader_parameter/fade_edge = 0.85999998077728
 [node name="Gameplay" type="Node2D" unique_id=396620555]
 script = ExtResource("12_gamepad")
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=219774997]
+visibility_layer = 4
+z_index = 20
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("3_s5y6v")
+metadata/_edit_use_anchors_ = true
+
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1571874628]
 z_index = -10
 
 [node name="Stage0" type="ColorRect" parent="Backgrounds" unique_id=1821536830]
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
@@ -88,17 +97,10 @@ mouse_filter = 2
 color = Color(0.08, 0.18, 0.2, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Backgrounds" unique_id=222656562]
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = 1
+offset_right = 640.0
+offset_bottom = 360.0
 texture = ExtResource("2_bhmdk")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="Backgrounds" unique_id=219774997]
-visibility_layer = 4
-z_index = 2
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_s5y6v")
 metadata/_edit_use_anchors_ = true
 
 [node name="FormTargets" type="Node2D" parent="." unique_id=1216790129]
@@ -123,8 +125,10 @@ visible = false
 position = Vector2(320, 360)
 
 [node name="OutsideTriggers" type="Node2D" parent="." unique_id=1247397993]
+visible = false
 
 [node name="OutsideTrigger0" parent="OutsideTriggers" unique_id=763388693 instance=ExtResource("20_outside")]
+position = Vector2(-129, -182)
 
 [node name="OutsideTrigger1" parent="OutsideTriggers" unique_id=567863234 instance=ExtResource("20_outside")]
 visible = false
@@ -141,11 +145,10 @@ visible = false
 [node name="Leaves" parent="." unique_id=252240349 instance=ExtResource("1_leaf_set")]
 
 [node name="ValidationDebug" type="Label" parent="." unique_id=1284349456]
+visible = false
 z_index = 100
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 760.0
-offset_bottom = 330.0
+offset_right = 250.0
+offset_bottom = 150.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
@@ -157,10 +160,10 @@ metadata/_edit_use_anchors_ = true
 [node name="PhaseMessage" type="Label" parent="." unique_id=1368191360]
 visible = false
 z_index = 110
-offset_left = 240.0
-offset_top = 285.0
-offset_right = 1040.0
-offset_bottom = 435.0
+offset_left = -86.0
+offset_top = 109.0
+offset_right = 714.0
+offset_bottom = 259.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 3
@@ -185,13 +188,10 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Shader" type="CanvasLayer" parent="." unique_id=733548721]
+follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="Shader" unique_id=399952779]
+z_index = 100
 texture_filter = 1
 material = SubResource("ShaderMaterial_cloud_b")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+size_flags_horizontal = 4
