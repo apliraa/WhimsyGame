@@ -22,8 +22,8 @@ func on_button_hover(button: Button, is_hovered: bool) -> void:
 
 func on_button_pressed(button: Button) -> void:
 	match button.name:
-		#"Play": 
-			#var _game: bool = get_tree().change_scene_to_file("res://Scenes/Menu/Main.tscn")
+		"Play": 
+			var _game: bool = get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
 		"Credits":
 			var _credits: bool = get_tree().change_scene_to_file("res://scenes/CreditsUI.tscn")
 		"Quit":

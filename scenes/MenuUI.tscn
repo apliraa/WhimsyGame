@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dm3abe4jq5uot"]
 
 [ext_resource type="Script" uid="uid://b7n2cyroo1vbk" path="res://scripts/menuUI.gd" id="1_811wr"]
+[ext_resource type="Texture2D" uid="uid://birgymnpwcf5c" path="res://assets/sprites/Backgrounds/Menu-Background.png" id="2_ia2ap"]
 [ext_resource type="Texture2D" uid="uid://djfmy5iwgamq3" path="res://assets/sprites/Menu/button_cloud4.png" id="2_najbj"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_55kpd"]
-font_size = 37
-outline_size = 5
-outline_color = Color(0.25490198, 0.8, 0, 1)
+[ext_resource type="FontFile" uid="uid://dfpirm0orcjjy" path="res://assets/Font/CozetteVector.ttf" id="3_1skp7"]
+[ext_resource type="Texture2D" uid="uid://iqykcjs2varw" path="res://assets/sprites/Menu/beleaf-Logo.png" id="3_nh6aw"]
+[ext_resource type="Texture2D" uid="uid://d3etji4cko2mi" path="res://assets/sprites/Menu/Sheets do Senhor.png" id="6_agnn5"]
+[ext_resource type="Script" uid="uid://crah5b1fw1a0x" path="res://scripts/animated_sprite_2d.gd" id="7_nh6aw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_najbj"]
 font_size = 18
@@ -126,6 +126,98 @@ _data = {
 &"hover": SubResource("Animation_ia2ap")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd7s3"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n0ek"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc767"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwsei"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ljyc"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50n2e"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmilj"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbbq1"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hjkp"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m77v"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt3ti"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je4k7"]
+atlas = ExtResource("6_agnn5")
+region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6wxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd7s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n0ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc767")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwsei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ljyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50n2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmilj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbbq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hjkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m77v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt3ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je4k7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Control" type="Control" unique_id=302165348]
 layout_mode = 3
 anchors_preset = 15
@@ -135,35 +227,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_811wr")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1250807621]
+[node name="Fundo" type="TextureRect" parent="." unique_id=1734998378]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.32411522, 0.6652055, 0.6706541, 1)
+texture = ExtResource("2_ia2ap")
 
-[node name="Label" type="Label" parent="." unique_id=464360941]
+[node name="Título" type="TextureRect" parent="." unique_id=632967371]
 layout_mode = 0
-offset_left = 456.0
-offset_top = 32.0
-offset_right = 576.0
-offset_bottom = 83.0
-text = "Beleaf"
-label_settings = SubResource("LabelSettings_55kpd")
+offset_left = 325.0
+offset_top = 21.0
+offset_right = 603.0
+offset_bottom = 107.0
+texture = ExtResource("3_nh6aw")
 
 [node name="EquipeNome" type="HBoxContainer" parent="." unique_id=456260761]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -99.25
+offset_left = -198.5
 offset_top = -44.0
-offset_right = 99.25
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
 
@@ -194,16 +284,25 @@ offset_right = -3.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_najbj")
 expand_mode = 1
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Play" unique_id=1062974122]
-layout_mode = 0
-offset_left = 27.01001
-offset_top = 12.389999
-offset_right = 71.01001
-offset_bottom = 38.39
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.994995
+offset_top = -9.5
+offset_right = 18.994995
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_1skp7")
 text = "PLAY"
 label_settings = SubResource("LabelSettings_najbj")
 
@@ -238,11 +337,19 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Credits" unique_id=771044490]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 12.0
-offset_right = 86.0
-offset_bottom = 38.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.497498
+offset_top = -9.5
+offset_right = 31.497498
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_1skp7")
 text = "CREDITS"
 label_settings = SubResource("LabelSettings_najbj")
 
@@ -276,13 +383,29 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Quit" unique_id=723005299]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 12.0
-offset_right = 72.0
-offset_bottom = 38.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -9.5
+offset_right = 18.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_1skp7")
 text = "QUIT"
 label_settings = SubResource("LabelSettings_najbj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Quit" unique_id=1423234996]
 libraries/ = SubResource("AnimationLibrary_nh6aw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1926766355]
+position = Vector2(189, 298)
+scale = Vector2(8.000001, 8.000001)
+sprite_frames = SubResource("SpriteFrames_f6wxy")
+frame_progress = 0.36516148
+flip_h = true
+script = ExtResource("7_nh6aw")
