@@ -18,6 +18,9 @@ public partial class PhaseController : Node
 	[Export(PropertyHint.Range, "0.1,5,0.1")]
 	public float DebugLogInterval { get; set; } = 0.5f;
 
+	[Export] public PackedScene GameWinScene;
+
+	[Export] public DayShader timeCycle;
 	private readonly List<Leaf> leaves = new();
 	private readonly List<FormTarget> formTargets = new();
 	private readonly List<OutsideTrigger> outsideTriggers = new();
@@ -284,6 +287,7 @@ public partial class PhaseController : Node
 			+ $"(cobertura aceita: {acceptedTarget.LastCoverage:P2}, "
 			+ $"mínimo: {RequiredCoverage:P2}, "
 			+ $"amostras: {acceptedTarget.LastCoveredSamples}/{acceptedTarget.LastTargetSamples})");
+			
 		if (debugLabel != null)
 		{
 			debugLabel.Text =
@@ -292,7 +296,19 @@ public partial class PhaseController : Node
 				+ $"mínimo={RequiredCoverage:P2}\n"
 				+ debugLabel.Text;
 		}
+		
 		EmitSignal(SignalName.PhaseAccepted, acceptedPhase);
+
+		// adicionar caminho
+		//var timeCycle = GetNodeOrNull<DayShader>("DayShader/ColorRect");
+		if (timeCycle != null)
+		{
+			timeCycle.SkipTime(0.25f, 2.0f);
+		}
+		else
+		{
+			GD.PrintErr("Não encontrou o nó timeCycle. Verifique o caminho!");
+		}
 
 		pendingNextPhase = currentPhase + 1;
 		currentPhase = -1;
@@ -315,7 +331,6 @@ public partial class PhaseController : Node
 			OnPhaseTransitionTimeout();
 		}
 	}
-
 	private void OnPhaseTransitionTimeout()
 	{
 		if (!phaseTransitioning)
@@ -337,16 +352,26 @@ public partial class PhaseController : Node
 			currentPhase = -1;
 			GD.Print("Todas as fases foram validadas.");
 			EmitSignal(SignalName.AllPhasesAccepted);
-			CallDeferred(MethodName.CloseGameAfterCompletion);
+			CallDeferred(MethodName.GameAfterCompletion);
 			return;
 		}
 
 		ActivatePhase(nextPhase);
 	}
 
-	private void CloseGameAfterCompletion()
+	private void GameAfterCompletion()
 	{
-		GetTree().Quit();
+		if (GameWinScene != null)
+		{
+			var switcher = GetNode<SceneSwitcher>("/root/SceneSwitcher");
+			
+			switcher.TransitionToPacked(GameWinScene);
+		}
+		else
+		{
+			GD.PrintErr("A cena de Game Win não foi configurada no PhaseController!");
+			GetTree().Quit(); 
+		}
 	}
 
 	private void ActivatePhase(int phaseIndex)

@@ -2,12 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf_set"]
 [ext_resource type="Texture2D" uid="uid://dbei1wj7fnabd" path="res://assets/sprites/Backgrounds/Picnic-Background-Fundo.png" id="2_bhmdk"]
+[ext_resource type="Shader" uid="uid://btcx7ex0f0quw" path="res://shaders/DayShader.gdshader" id="2_mesn4"]
+[ext_resource type="Script" uid="uid://crd6sihnvkqnm" path="res://scripts/DayShader.cs" id="3_525vb"]
 [ext_resource type="Texture2D" uid="uid://xneoq27hxn85" path="res://assets/sprites/Backgrounds/Picnic-Background-GramaAlta.png" id="3_s5y6v"]
 [ext_resource type="Script" uid="uid://cfkli20q5ydoo" path="res://scripts/GamepadController.cs" id="12_gamepad"]
 [ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="13_cursor"]
 [ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="14_phase"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_butterfly.tscn" id="15_butterfly"]
 [ext_resource type="AudioStream" uid="uid://c4aaxetpqp3jy" path="res://assets/Sfx/dragon-studio-wind-rustling-grass-339094.wav" id="15_s5y6v"]
+[ext_resource type="PackedScene" uid="uid://jlfbysq5dhni" path="res://scenes/CreditsUI.tscn" id="16_25e7j"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_mushroom.tscn" id="16_mushroom"]
 [ext_resource type="AudioStream" uid="uid://bsyt77q11iaru" path="res://assets/Sfx/freesound_community-birds-chirping-75156.wav" id="16_w3w6i"]
 [ext_resource type="Script" uid="uid://bnycmagdqwvbd" path="res://scripts/audio_stream_player_2d.gd" id="17_pv71h"]
@@ -19,6 +22,20 @@
 [ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="20_outside"]
 [ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="21_mouse"]
 [ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
+
+[sub_resource type="Gradient" id="Gradient_25e7j"]
+offsets = PackedFloat32Array(0, 0.28723404, 0.61702126, 1)
+colors = PackedColorArray(0.9372549, 0.9137255, 1, 1, 0.9607843, 0.94509804, 0.8117647, 1, 1, 0.8862745, 0.34901962, 1, 1, 0.5372549, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mesn4"]
+gradient = SubResource("Gradient_25e7j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k41lo"]
+shader = ExtResource("2_mesn4")
+shader_parameter/day_gradient = SubResource("GradientTexture1D_mesn4")
+shader_parameter/time_of_day = 0.5
+shader_parameter/intensity = 1.0
+shader_parameter/saturation = 1.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_c"]
 
@@ -52,6 +69,20 @@ shader_parameter/fade_edge = 1.0
 
 [node name="Gameplay" type="Node2D" unique_id=396620555]
 script = ExtResource("12_gamepad")
+
+[node name="DayShader" type="CanvasLayer" parent="." unique_id=1609221840]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="DayShader" unique_id=1522479255]
+z_index = 200
+material = SubResource("ShaderMaterial_k41lo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_525vb")
 
 [node name="Shader" type="CanvasLayer" parent="." unique_id=733548721]
 follow_viewport_enabled = true
@@ -195,8 +226,10 @@ vertical_alignment = 1
 [node name="Cursor" parent="." unique_id=1525754575 instance=ExtResource("13_cursor")]
 position = Vector2(640, 360)
 
-[node name="PhaseController" type="Node" parent="." unique_id=1301799153]
+[node name="PhaseController" type="Node" parent="." unique_id=1301799153 node_paths=PackedStringArray("timeCycle")]
 script = ExtResource("14_phase")
+GameWinScene = ExtResource("16_25e7j")
+timeCycle = NodePath("../DayShader/ColorRect")
 
 [node name="MouseController" type="Node" parent="." unique_id=1804720275]
 script = ExtResource("21_mouse")
