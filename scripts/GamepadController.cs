@@ -31,6 +31,10 @@ public partial class GamepadController : Node
 			Input.GetJoyAxis(ControllerDeviceId, JoyAxis.LeftX),
 			Input.GetJoyAxis(ControllerDeviceId, JoyAxis.LeftY));
 		moveInput = ApplyDeadzone(moveInput);
+		if (interactPressed || moveInput != Vector2.Zero)
+		{
+			cursor.Visible = true;
+		}
 
 		if (controlledLeaf == null)
 		{
