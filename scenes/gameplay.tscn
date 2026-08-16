@@ -162,19 +162,6 @@ visible = false
 
 [node name="Leaves" parent="." unique_id=252240349 instance=ExtResource("1_leaf_set")]
 
-[node name="ValidationDebug" type="Label" parent="." unique_id=1284349456]
-visible = false
-z_index = 100
-offset_right = 250.0
-offset_bottom = 150.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 14
-text = "Validação debug"
-metadata/_edit_use_anchors_ = true
-
 [node name="PhaseMessage" type="Label" parent="." unique_id=1368191360]
 visible = false
 z_index = 110
