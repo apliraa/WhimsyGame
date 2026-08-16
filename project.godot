@@ -23,10 +23,9 @@ SceneSwitcher="*uid://cpcdjxw8mc04h"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="viewport"
 
 [dotnet]
 

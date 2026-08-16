@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cb8ju37jjruh4"]
 
 [ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf_set"]
+[ext_resource type="Texture2D" uid="uid://dbei1wj7fnabd" path="res://assets/sprites/Backgrounds/Picnic-Background-Fundo.png" id="2_bhmdk"]
+[ext_resource type="Texture2D" uid="uid://xneoq27hxn85" path="res://assets/sprites/Backgrounds/Picnic-Background-GramaAlta.png" id="3_s5y6v"]
 [ext_resource type="Script" uid="uid://cfkli20q5ydoo" path="res://scripts/GamepadController.cs" id="12_gamepad"]
 [ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="13_cursor"]
 [ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="14_phase"]
@@ -12,36 +14,6 @@
 [ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="20_outside"]
 [ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="21_mouse"]
 [ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_a"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_a"]
-noise = SubResource("FastNoiseLite_cloud_a")
-seamless = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_b"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_b"]
-noise = SubResource("FastNoiseLite_cloud_b")
-seamless = true
-
-[sub_resource type="Gradient" id="Gradient_cloud_a"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloud_a"]
-gradient = SubResource("Gradient_cloud_a")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_a"]
-shader = ExtResource("22_cloud_shader")
-shader_parameter/pixelation = Vector2(256, 256)
-shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_cloud_a")
-shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
-shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_b")
-shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
-shader_parameter/center_pos = Vector2(0.5, 0.5)
-shader_parameter/position_impact = 0.75
-shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_a")
-shader_parameter/clear_radius = 0.53999998792992
-shader_parameter/fade_edge = 0.26999999396496
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_c"]
 
@@ -74,135 +46,147 @@ shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_b")
 shader_parameter/clear_radius = 0.55999998748288
 shader_parameter/fade_edge = 0.85999998077728
 
-[node name="Gameplay" type="Node2D"]
+[node name="Gameplay" type="Node2D" unique_id=396620555]
 script = ExtResource("12_gamepad")
 
-[node name="Backgrounds" type="Node2D" parent="."]
+[node name="Backgrounds" type="Node2D" parent="." unique_id=1571874628]
 z_index = -10
 
-[node name="Stage0" type="ColorRect" parent="Backgrounds"]
+[node name="Stage0" type="ColorRect" parent="Backgrounds" unique_id=1821536830]
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.08, 0.12, 0.2, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="Stage1" type="ColorRect" parent="Backgrounds"]
+[node name="Stage1" type="ColorRect" parent="Backgrounds" unique_id=2138262418]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.2, 0.12, 0.08, 1)
 
-[node name="Stage2" type="ColorRect" parent="Backgrounds"]
+[node name="Stage2" type="ColorRect" parent="Backgrounds" unique_id=1086267154]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.12, 0.2, 0.14, 1)
 
-[node name="Stage3" type="ColorRect" parent="Backgrounds"]
+[node name="Stage3" type="ColorRect" parent="Backgrounds" unique_id=1310909411]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.18, 0.1, 0.22, 1)
 
-[node name="Stage4" type="ColorRect" parent="Backgrounds"]
+[node name="Stage4" type="ColorRect" parent="Backgrounds" unique_id=2127237020]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.08, 0.18, 0.2, 1)
 
-[node name="FormTargets" type="Node2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Backgrounds" unique_id=222656562]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_bhmdk")
+metadata/_edit_use_anchors_ = true
 
-[node name="ButterflyTarget" parent="FormTargets" instance=ExtResource("15_butterfly")]
-position = Vector2(640, 360)
+[node name="TextureRect2" type="TextureRect" parent="Backgrounds" unique_id=219774997]
+visibility_layer = 4
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_s5y6v")
+metadata/_edit_use_anchors_ = true
 
-[node name="MushroomTarget" parent="FormTargets" instance=ExtResource("16_mushroom")]
+[node name="FormTargets" type="Node2D" parent="." unique_id=1216790129]
+
+[node name="ButterflyTarget" parent="FormTargets" unique_id=348441239 instance=ExtResource("15_butterfly")]
+position = Vector2(320, 180)
+
+[node name="MushroomTarget" parent="FormTargets" unique_id=1620848467 instance=ExtResource("16_mushroom")]
 visible = false
-position = Vector2(640, 360)
+position = Vector2(320, 180)
 
-[node name="StarTarget" parent="FormTargets" instance=ExtResource("17_star")]
+[node name="StarTarget" parent="FormTargets" unique_id=806052596 instance=ExtResource("17_star")]
 visible = false
-position = Vector2(640, 360)
+position = Vector2(320, 180)
 
-[node name="CloudTarget" parent="FormTargets" instance=ExtResource("18_cloud")]
+[node name="CloudTarget" parent="FormTargets" unique_id=2037365095 instance=ExtResource("18_cloud")]
 visible = false
-position = Vector2(640, 360)
+position = Vector2(320, 180)
 
-[node name="DuckTarget" parent="FormTargets" instance=ExtResource("19_duck")]
+[node name="DuckTarget" parent="FormTargets" unique_id=2048141997 instance=ExtResource("19_duck")]
 visible = false
-position = Vector2(640, 360)
+position = Vector2(320, 360)
 
-[node name="OutsideTriggers" type="Node2D" parent="."]
+[node name="OutsideTriggers" type="Node2D" parent="." unique_id=1247397993]
 
-[node name="OutsideTrigger0" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+[node name="OutsideTrigger0" parent="OutsideTriggers" unique_id=763388693 instance=ExtResource("20_outside")]
 
-[node name="OutsideTrigger1" parent="OutsideTriggers" instance=ExtResource("20_outside")]
-visible = false
-
-[node name="OutsideTrigger2" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+[node name="OutsideTrigger1" parent="OutsideTriggers" unique_id=567863234 instance=ExtResource("20_outside")]
 visible = false
 
-[node name="OutsideTrigger3" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+[node name="OutsideTrigger2" parent="OutsideTriggers" unique_id=219510391 instance=ExtResource("20_outside")]
 visible = false
 
-[node name="OutsideTrigger4" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+[node name="OutsideTrigger3" parent="OutsideTriggers" unique_id=1109180018 instance=ExtResource("20_outside")]
 visible = false
 
-[node name="Leaves" parent="." instance=ExtResource("1_leaf_set")]
+[node name="OutsideTrigger4" parent="OutsideTriggers" unique_id=216961520 instance=ExtResource("20_outside")]
+visible = false
 
-[node name="ValidationDebug" type="Label" parent="."]
+[node name="Leaves" parent="." unique_id=252240349 instance=ExtResource("1_leaf_set")]
+
+[node name="ValidationDebug" type="Label" parent="." unique_id=1284349456]
+z_index = 100
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 760.0
 offset_bottom = 330.0
-mouse_filter = 2
-z_index = 100
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 14
 text = "Validação debug"
+metadata/_edit_use_anchors_ = true
 
-[node name="PhaseMessage" type="Label" parent="."]
+[node name="PhaseMessage" type="Label" parent="." unique_id=1368191360]
 visible = false
+z_index = 110
 offset_left = 240.0
 offset_top = 285.0
 offset_right = 1040.0
 offset_bottom = 435.0
-mouse_filter = 2
-z_index = 110
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 32
-text = "Parabéns! Fase 1 concluída!\nPróxima fase em instantes..."
+text = "Parabéns! Fase 1 concluída!
+Próxima fase em instantes..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cursor" parent="." instance=ExtResource("13_cursor")]
+[node name="Cursor" parent="." unique_id=1525754575 instance=ExtResource("13_cursor")]
 position = Vector2(640, 360)
 
-[node name="PhaseController" type="Node" parent="."]
+[node name="PhaseController" type="Node" parent="." unique_id=1301799153]
 script = ExtResource("14_phase")
-RequiredCoverage = 0.99
-DebugValidation = true
-DebugLogInterval = 0.5
 
-[node name="MouseController" type="Node" parent="."]
+[node name="MouseController" type="Node" parent="." unique_id=1804720275]
 script = ExtResource("21_mouse")
 
-[node name="PhaseTransitionTimer" type="Timer" parent="."]
+[node name="PhaseTransitionTimer" type="Timer" parent="." unique_id=730722332]
 wait_time = 4.0
 one_shot = true
 
-[node name="Shader" type="CanvasLayer" parent="."]
+[node name="Shader" type="CanvasLayer" parent="." unique_id=733548721]
 
-[node name="ColorRect" type="ColorRect" parent="Shader"]
+[node name="ColorRect" type="ColorRect" parent="Shader" unique_id=399952779]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cloud_b")
 anchors_preset = 15
@@ -210,3 +194,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
