@@ -72,6 +72,7 @@ public partial class Leaf : Sprite2D
 			leafHitbox.AreaEntered -= OnLeafHitboxAreaEntered;
 			leafHitbox.AreaExited -= OnLeafHitboxAreaExited;
 		}
+
 	}
 
 	public void BeginControllerControl()

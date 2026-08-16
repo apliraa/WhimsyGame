@@ -1,16 +1,78 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cb8ju37jjruh4"]
 
-[ext_resource type="PackedScene" path="res://scenes/leaf.tscn" id="1_leaf_set"]
-[ext_resource type="Script" path="res://scripts/GamepadController.cs" id="12_gamepad"]
+[ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf_set"]
+[ext_resource type="Script" uid="uid://cfkli20q5ydoo" path="res://scripts/GamepadController.cs" id="12_gamepad"]
 [ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="13_cursor"]
-[ext_resource type="Script" path="res://scripts/PhaseController.cs" id="14_phase"]
+[ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="14_phase"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_butterfly.tscn" id="15_butterfly"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_mushroom.tscn" id="16_mushroom"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_star.tscn" id="17_star"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_cloud.tscn" id="18_cloud"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_duck.tscn" id="19_duck"]
 [ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="20_outside"]
-[ext_resource type="Script" path="res://scripts/MouseController.cs" id="21_mouse"]
+[ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="21_mouse"]
+[ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_a"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_a"]
+noise = SubResource("FastNoiseLite_cloud_a")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_b"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_b"]
+noise = SubResource("FastNoiseLite_cloud_b")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_cloud_a"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloud_a"]
+gradient = SubResource("Gradient_cloud_a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_a"]
+shader = ExtResource("22_cloud_shader")
+shader_parameter/pixelation = Vector2(256, 256)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_cloud_a")
+shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_b")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0.5)
+shader_parameter/position_impact = 0.75
+shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_a")
+shader_parameter/clear_radius = 0.53999998792992
+shader_parameter/fade_edge = 0.26999999396496
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_c"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_c"]
+noise = SubResource("FastNoiseLite_cloud_c")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_d"]
+noise = SubResource("FastNoiseLite_cloud_d")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_cloud_b"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloud_b"]
+gradient = SubResource("Gradient_cloud_b")
+fill = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_b"]
+shader = ExtResource("22_cloud_shader")
+shader_parameter/pixelation = Vector2(1280, 720)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_cloud_c")
+shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_d")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0.5)
+shader_parameter/position_impact = 0.75
+shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_b")
+shader_parameter/clear_radius = 0.55999998748288
+shader_parameter/fade_edge = 0.85999998077728
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("12_gamepad")
@@ -137,3 +199,14 @@ script = ExtResource("21_mouse")
 [node name="PhaseTransitionTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_cloud_b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
