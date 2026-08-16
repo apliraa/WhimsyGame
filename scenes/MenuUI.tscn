@@ -244,24 +244,6 @@ offset_right = 603.0
 offset_bottom = 107.0
 texture = ExtResource("3_nh6aw")
 
-[node name="EquipeNome" type="HBoxContainer" parent="." unique_id=456260761]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -198.5
-offset_top = -44.0
-grow_horizontal = 0
-grow_vertical = 0
-alignment = 1
-
-[node name="Label" type="Label" parent="EquipeNome" unique_id=1799462083]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Equipe CNTRL'R"
-
 [node name="Play" type="Button" parent="." unique_id=1919770205 groups=["Button"]]
 texture_filter = 1
 layout_mode = 0

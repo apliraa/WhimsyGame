@@ -8,12 +8,12 @@ func _ready() -> void:
 		
 	pass 
 	
-func on_button_pressed(button: Button) -> void:
+func on_button_pressed(button: TextureButton) -> void:
 	match button.name:
 		"Back": 
 			var _game: bool = get_tree().change_scene_to_file("res://scenes/MenuUI.tscn")
 		
-func mouse_interaction(button: Button, state: String) -> void:
+func mouse_interaction(button: TextureButton, state: String) -> void:
 	match state:
 		"exited":
 			button.modulate.a = 1
