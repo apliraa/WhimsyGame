@@ -1,6 +1,28 @@
 [gd_scene format=3 uid="uid://jlfbysq5dhni"]
 
 [ext_resource type="Script" uid="uid://dspw4pxighgp6" path="res://scripts/creditsUI.gd" id="1_5wf6t"]
+[ext_resource type="FontFile" uid="uid://dfpirm0orcjjy" path="res://assets/Font/CozetteVector.ttf" id="2_t8hmm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_55kpd"]
+font = ExtResource("2_t8hmm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0npms"]
+font = ExtResource("2_t8hmm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6kop8"]
+font = ExtResource("2_t8hmm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7ysd"]
+font = ExtResource("2_t8hmm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kddt0"]
+font = ExtResource("2_t8hmm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxuu1"]
+font = ExtResource("2_t8hmm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ik4f6"]
+font = ExtResource("2_t8hmm")
 
 [node name="Credits" type="Control" unique_id=1444699439]
 layout_mode = 3
@@ -20,55 +42,71 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32411522, 0.6652055, 0.6706541, 1)
 
-[node name="MainMenu" type="VBoxContainer" parent="." unique_id=494037274]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -255.5
-offset_top = -173.0
-offset_right = 255.5
-offset_bottom = 173.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Nome1" type="Label" parent="MainMenu" unique_id=1265263576]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome1"
-horizontal_alignment = 1
-
-[node name="Nome2" type="Label" parent="MainMenu" unique_id=283881199]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome2"
-horizontal_alignment = 1
-
-[node name="Nome3" type="Label" parent="MainMenu" unique_id=750417024]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome3"
-horizontal_alignment = 1
-
-[node name="Nome4" type="Label" parent="MainMenu" unique_id=1855209970]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome4"
-horizontal_alignment = 1
-
 [node name="Back" type="Button" parent="." unique_id=1755293270 groups=["Button"]]
 layout_mode = 1
 offset_right = 110.0
 offset_bottom = 54.0
 text = "Back "
+
+[node name="Arthur" type="Label" parent="." unique_id=819038127]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 80.0
+offset_right = 150.76999
+offset_bottom = 103.0
+text = "Arthur Lira"
+label_settings = SubResource("LabelSettings_55kpd")
+
+[node name="Caio" type="Label" parent="." unique_id=1211686661]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 150.76999
+offset_bottom = 127.0
+text = "Caio Lobato"
+label_settings = SubResource("LabelSettings_0npms")
+
+[node name="Eryck" type="Label" parent="." unique_id=599172465]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 175.0
+offset_bottom = 151.0
+text = "Eryck Emmanuel "
+label_settings = SubResource("LabelSettings_6kop8")
+
+[node name="Gabriel" type="Label" parent="." unique_id=844096751]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 152.0
+offset_right = 160.0
+offset_bottom = 175.0
+text = "Gabriel Pires"
+label_settings = SubResource("LabelSettings_o7ysd")
+
+[node name="italo" type="Label" parent="." unique_id=153050306]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 176.0
+offset_right = 160.0
+offset_bottom = 199.0
+text = "Italo Brandao"
+label_settings = SubResource("LabelSettings_kddt0")
+
+[node name="Rennan" type="Label" parent="." unique_id=1749338467]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 200.0
+offset_right = 150.76999
+offset_bottom = 223.0
+text = "Rennan"
+label_settings = SubResource("LabelSettings_bxuu1")
+
+[node name="Tales" type="Label" parent="." unique_id=1551895018]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 224.0
+offset_right = 150.76999
+offset_bottom = 247.0
+text = "Tales Paiva"
+label_settings = SubResource("LabelSettings_ik4f6")
