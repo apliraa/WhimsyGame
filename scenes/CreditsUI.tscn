@@ -1,6 +1,58 @@
 [gd_scene format=3 uid="uid://jlfbysq5dhni"]
 
 [ext_resource type="Script" uid="uid://dspw4pxighgp6" path="res://scripts/creditsUI.gd" id="1_5wf6t"]
+[ext_resource type="FontFile" uid="uid://dfpirm0orcjjy" path="res://assets/Font/CozetteVector.ttf" id="2_t8hmm"]
+[ext_resource type="Texture2D" uid="uid://b8jxcy37ubq7o" path="res://assets/sprites/Menu/Credits.png" id="2_w6djq"]
+[ext_resource type="Texture2D" uid="uid://pve6fl7fw774" path="res://assets/sprites/Menu/Back.png" id="3_4kub2"]
+[ext_resource type="Texture2D" uid="uid://b53tk5vk78boq" path="res://assets/sprites/Menu/3e75612a-365a-494f-9712-e7300d9071e9.jpg" id="5_hooq2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_55kpd"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0npms"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6kop8"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7ysd"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kddt0"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxuu1"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ik4f6"]
+font = ExtResource("2_t8hmm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t36jr"]
+font = ExtResource("2_t8hmm")
+font_size = 45
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Credits" type="Control" unique_id=1444699439]
 layout_mode = 3
@@ -11,64 +63,101 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5wf6t")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=236582574]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1095723839]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 17.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.32411522, 0.6652055, 0.6706541, 1)
+texture = ExtResource("2_w6djq")
 
-[node name="MainMenu" type="VBoxContainer" parent="." unique_id=494037274]
+[node name="Back" type="TextureButton" parent="." unique_id=1536346722 groups=["Button"]]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -255.5
-offset_top = -173.0
-offset_right = 255.5
-offset_bottom = 173.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
+offset_left = 32.0
+offset_top = 20.0
+offset_right = 88.0
+offset_bottom = 74.0
+texture_normal = ExtResource("3_4kub2")
 
-[node name="Nome1" type="Label" parent="MainMenu" unique_id=1265263576]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome1"
-horizontal_alignment = 1
+[node name="Arthur" type="Label" parent="." unique_id=819038127]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 96.0
+offset_right = 240.0
+offset_bottom = 121.0
+text = "Arthur Lira"
+label_settings = SubResource("LabelSettings_55kpd")
 
-[node name="Nome2" type="Label" parent="MainMenu" unique_id=283881199]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome2"
-horizontal_alignment = 1
+[node name="Caio" type="Label" parent="." unique_id=1211686661]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 122.0
+offset_right = 241.0
+offset_bottom = 147.0
+text = "Caio Lobato"
+label_settings = SubResource("LabelSettings_0npms")
 
-[node name="Nome3" type="Label" parent="MainMenu" unique_id=750417024]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome3"
-horizontal_alignment = 1
+[node name="Eryck" type="Label" parent="." unique_id=599172465]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 146.0
+offset_right = 285.0
+offset_bottom = 171.0
+text = "Eryck Emmanuel "
+label_settings = SubResource("LabelSettings_6kop8")
 
-[node name="Nome4" type="Label" parent="MainMenu" unique_id=1855209970]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Nome4"
-horizontal_alignment = 1
+[node name="Gabriel" type="Label" parent="." unique_id=844096751]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 171.0
+offset_right = 263.0
+offset_bottom = 196.0
+text = "Gabriel Pires"
+label_settings = SubResource("LabelSettings_o7ysd")
 
-[node name="Back" type="Button" parent="." unique_id=1755293270 groups=["Button"]]
-layout_mode = 1
-offset_right = 110.0
-offset_bottom = 54.0
-text = "Back "
+[node name="italo" type="Label" parent="." unique_id=153050306]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 195.0
+offset_right = 263.0
+offset_bottom = 220.0
+text = "Italo Brandao"
+label_settings = SubResource("LabelSettings_kddt0")
+
+[node name="Rennan" type="Label" parent="." unique_id=1749338467]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 219.0
+offset_right = 205.76999
+offset_bottom = 244.0
+text = "Rennan Januario"
+label_settings = SubResource("LabelSettings_bxuu1")
+
+[node name="Tales" type="Label" parent="." unique_id=1551895018]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 243.0
+offset_right = 240.0
+offset_bottom = 268.0
+text = "Tales Paiva"
+label_settings = SubResource("LabelSettings_ik4f6")
+
+[node name="Label" type="Label" parent="." unique_id=991909686]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 295.0
+offset_right = 466.0
+offset_bottom = 341.0
+text = "EQUIPE CNTRL'R"
+label_settings = SubResource("LabelSettings_t36jr")
+
+[node name="3e75612a365a494f9712E7300d9071e9" type="Sprite2D" parent="." unique_id=421539800]
+texture_filter = 1
+position = Vector2(464, 176)
+scale = Vector2(0.28125003, 0.28125003)
+texture = ExtResource("5_hooq2")
