@@ -21,11 +21,13 @@ public partial class Leaf : Sprite2D
 	private int formOverlapCount;
 	private int outsideOverlapCount;
 	private static int nextStackOrder;
-	private static int nextPlacedStackOrder = 80;
-	private const int ControlledStackOrder = 90;
+	//private static int nextPlacedStackOrder = 10;
+	//private const int ControlledStackOrder = 15;
+	// Guarda a ordem antes da folha pular para o topo
+	public int OldStackOrder; //teste
 	private int initialStackOrder;
 	private int stackOrder;
-	private bool hasBeenPlaced;
+	//private bool hasBeenPlaced;
 	private Tween placementTween;
 	private Vector2 baseOffset;
 
@@ -87,12 +89,12 @@ public partial class Leaf : Sprite2D
 		bool wasControllerControlled = controllerControlled;
 		controllerControlled = false;
 
-		if (wasControllerControlled)
-		{
-			RegisterFirstPlacement();
-		}
+		// if (wasControllerControlled)
+		// {
+		// 	RegisterFirstPlacement();
+		// }
 
-		ZIndex = mouseControlled ? ControlledStackOrder : stackOrder;
+		//ZIndex = mouseControlled ? ControlledStackOrder : stackOrder;
 	}
 
 	public void BeginMouseControl()
@@ -107,12 +109,12 @@ public partial class Leaf : Sprite2D
 		bool wasMouseControlled = mouseControlled;
 		mouseControlled = false;
 
-		if (wasMouseControlled)
-		{
-			RegisterFirstPlacement();
-		}
+		// if (wasMouseControlled)
+		// {
+		// 	RegisterFirstPlacement();
+		// } 
 
-		ZIndex = controllerControlled ? ControlledStackOrder : stackOrder;
+		//ZIndex = controllerControlled ? ControlledStackOrder : stackOrder;
 
 		if (wasMouseControlled)
 		{
@@ -264,37 +266,56 @@ public partial class Leaf : Sprite2D
 		}
 	}
 
-	public void OnAnyLeafFocused(Node2D focusedLeaf)
+	private void BringToFront()
+{
+	// Salva a ordem antiga antes de ir para o topo
+	OldStackOrder = stackOrder; 
+	
+	// Pula para o limite máximo estabelecido (15)
+	stackOrder = 15; 
+	ZIndex = stackOrder;
+
+	// Dispara o sinal avisando as outras folhas para se reorganizarem
+	if (SignalBus.Instance != null)
 	{
-		if (focusedLeaf != this && !mouseControlled && !controllerControlled)
+		SignalBus.Instance.EmitSignal(SignalBus.SignalName.LeafFocused, this);
+	}
+}
+
+public void OnAnyLeafFocused(Node2D focusedLeafNode)
+{
+	// Verifica se o nó focado é uma folha e se NÃO SOU EU mesma
+	if (focusedLeafNode is Leaf focusedLeaf && focusedLeaf != this)
+	{
+		// Se a minha ordem atual estava acima ou igual a ordem antiga da folha 
+		// que acabou de subir, eu desço 1 degrau para dar espaço.
+		if (this.stackOrder >= focusedLeaf.OldStackOrder)
 		{
-			ZIndex = stackOrder;
+			// O Mathf.Max garante que a folha nunca fique com ZIndex negativo
+			this.stackOrder = Mathf.Max(0, this.stackOrder - 1);
+			this.ZIndex = this.stackOrder;
 		}
 	}
-
-	private void BringToFront()
-	{
-		ZIndex = ControlledStackOrder;
-	}
+}
 
 	public void ResetPlacementOrder()
 	{
 		CancelPlacementAnimation();
-		hasBeenPlaced = false;
+		//hasBeenPlaced = false;
 		stackOrder = initialStackOrder;
 		ZIndex = stackOrder;
 	}
 
-	private void RegisterFirstPlacement()
-	{
-		if (hasBeenPlaced)
-		{
-			return;
-		}
+	// private void RegisterFirstPlacement()
+	// {
+	// 	if (hasBeenPlaced)
+	// 	{
+	// 		return;
+	// 	}
 
-		hasBeenPlaced = true;
-		stackOrder = nextPlacedStackOrder--;
-	}
+	// 	hasBeenPlaced = true;
+	// 	stackOrder = nextPlacedStackOrder--;
+	// } //teste
 
 	private void PlayPlacementAnimation()
 	{

@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform vec2 pixelation = vec2(1280, 720); //The resolution of the Texture
+uniform vec2 pixelation = vec2(640, 360); //The resolution of the Texture
 uniform sampler2D cloud_noise1; //The first scroling noise for the clouds
 uniform vec2 scroll_speed1 = vec2(0.02, 0.007); //The scroll-speed of the first noise
 uniform sampler2D cloud_noise2; //The second scroling noise for the clouds

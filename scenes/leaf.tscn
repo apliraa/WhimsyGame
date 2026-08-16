@@ -16,7 +16,6 @@
 [node name="Leaves" type="Node2D" unique_id=1666592087]
 
 [node name="Leaf01" type="Sprite2D" parent="." unique_id=1729570251 groups=["leaves"]]
-z_index = 1
 texture_filter = 1
 position = Vector2(93, 78)
 texture = ExtResource("1_leaf01_texture")
