@@ -1,9 +1,135 @@
 [gd_scene format=3 uid="uid://dm3abe4jq5uot"]
 
 [ext_resource type="Script" uid="uid://b7n2cyroo1vbk" path="res://scripts/menuUI.gd" id="1_811wr"]
+[ext_resource type="Texture2D" uid="uid://djfmy5iwgamq3" path="res://assets/sprites/Menu/button_cloud4.png" id="2_najbj"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lumdm"]
-font_size = 122
+[sub_resource type="LabelSettings" id="LabelSettings_najbj"]
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1skp7"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6gh02"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_082ss"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_1skp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 101)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Quit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 229)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 165)]
+}
+
+[sub_resource type="Animation" id="Animation_najbj"]
+resource_name = "buttons_hover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 38), Vector2(440, 33), Vector2(440, 38), Vector2(440, 43), Vector2(440, 38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 101), Vector2(440, 96), Vector2(440, 101), Vector2(440, 106), Vector2(440, 101)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Quit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 229), Vector2(440, 224), Vector2(440, 229), Vector2(440, 234), Vector2(440, 229)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Options:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(440, 165), Vector2(440, 160), Vector2(440, 165), Vector2(440, 170), Vector2(440, 165)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_najbj"]
+_data = {
+&"RESET": SubResource("Animation_1skp7"),
+&"buttons_hover": SubResource("Animation_najbj")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_55kpd"]
+font_size = 37
+outline_size = 5
+outline_color = Color(0.25490198, 0.8, 0, 1)
 
 [node name="Control" type="Control" unique_id=302165348]
 layout_mode = 3
@@ -42,57 +168,87 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Equipe CNTRL'R"
 
-[node name="MainMenu" type="VBoxContainer" parent="." unique_id=867378382]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0007813
-anchor_top = 0.027777778
-anchor_right = 1.0007813
-anchor_bottom = 0.027777778
-offset_left = -1247.0
-offset_top = 30.0
-offset_right = -597.0
-offset_bottom = 602.0
-grow_horizontal = 0
-theme_override_constants/separation = 20
-metadata/_edit_use_anchors_ = true
+[node name="Play" type="TextureButton" parent="." unique_id=688828362 groups=["Button"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 440.0
+offset_top = 38.0
+offset_right = 576.0
+offset_bottom = 166.0
+texture_normal = ExtResource("2_najbj")
 
-[node name="NomeDoJogo" type="Label" parent="MainMenu" unique_id=852933093]
-custom_minimum_size = Vector2(650, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 48
+[node name="Label" type="Label" parent="Play" unique_id=1062974122]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 46.0
+offset_right = 97.0
+offset_bottom = 72.0
+text = "PLAY"
+label_settings = SubResource("LabelSettings_najbj")
+
+[node name="Credits" type="TextureButton" parent="." unique_id=1844054553 groups=["Button"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 440.0
+offset_top = 101.0
+offset_right = 568.0
+offset_bottom = 229.0
+texture_normal = ExtResource("2_najbj")
+
+[node name="Label" type="Label" parent="Credits" unique_id=55731733]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 47.0
+offset_right = 107.0
+offset_bottom = 70.0
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_1skp7")
+
+[node name="Quit" type="TextureButton" parent="." unique_id=379486824 groups=["Button"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 440.0
+offset_top = 229.0
+offset_right = 568.0
+offset_bottom = 357.00085
+texture_normal = ExtResource("2_najbj")
+
+[node name="Label" type="Label" parent="Quit" unique_id=1621443649]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 46.0
+offset_right = 94.0
+offset_bottom = 69.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_6gh02")
+
+[node name="Options" type="TextureButton" parent="." unique_id=225725244 groups=["Button"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 440.0
+offset_top = 165.0
+offset_right = 576.0
+offset_bottom = 293.00085
+texture_normal = ExtResource("2_najbj")
+
+[node name="Label" type="Label" parent="Options" unique_id=2145120764]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 111.0
+offset_bottom = 71.0
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_082ss")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=902098135]
+libraries/ = SubResource("AnimationLibrary_najbj")
+autoplay = &"buttons_hover"
+
+[node name="Label" type="Label" parent="." unique_id=464360941]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 8.0
+offset_right = 572.0
+offset_bottom = 59.0
 text = "Beleaf"
-label_settings = SubResource("LabelSettings_lumdm")
-
-[node name="Play" type="Button" parent="." unique_id=1063857656 groups=["Button"]]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 256.0
-offset_right = 256.0
-offset_bottom = 320.0
-text = "Play"
-
-[node name="Credits" type="Button" parent="." unique_id=2114428408 groups=["Button"]]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 352.0
-offset_right = 256.0
-offset_bottom = 416.0
-text = "Credits"
-
-[node name="Quit" type="Button" parent="." unique_id=1744676064 groups=["Button"]]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 544.0
-offset_right = 256.0
-offset_bottom = 608.0
-text = "Quit "
-
-[node name="Options" type="Button" parent="." unique_id=958667342 groups=["Button"]]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 448.0
-offset_right = 256.0
-offset_bottom = 512.0
-text = "Options"
+label_settings = SubResource("LabelSettings_55kpd")
