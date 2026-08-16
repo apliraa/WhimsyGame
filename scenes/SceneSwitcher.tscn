@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cpcdjxw8mc04h"]
+
+[ext_resource type="Script" uid="uid://dv1eblwhjkcyk" path="res://scripts/SceneSwitcher.cs" id="1_ssicv"]
+[ext_resource type="PackedScene" uid="uid://cg15gg2ob7x7a" path="res://scenes/gameplay.tscn" id="2_ihc16"]
+
+[node name="SceneSwitcher" type="Node2D" unique_id=1593650967 node_paths=PackedStringArray("Rect")]
+script = ExtResource("1_ssicv")
+Rect = NodePath("CanvasLayer/ColorRect")
+NextScene = ExtResource("2_ihc16")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=287372693]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=590435481]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)

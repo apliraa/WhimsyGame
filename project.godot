@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 
 Globals="*uid://vliw14y0obkh"
 SignalBus="*uid://cn45ijha6gqj3"
+SceneSwitcher="*uid://cpcdjxw8mc04h"
 
 [display]
 

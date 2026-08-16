@@ -1,22 +1,22 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cg15gg2ob7x7a"]
 
-[ext_resource type="PackedScene" path="res://scenes/leaf.tscn" id="1_leaf"]
-[ext_resource type="Script" path="res://scripts/GamepadController.cs" id="2_gamepad"]
+[ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf"]
+[ext_resource type="Script" uid="uid://cfkli20q5ydoo" path="res://scripts/GamepadController.cs" id="2_gamepad"]
 [ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="3_cursor"]
 
-[node name="Gameplay" type="Node2D"]
+[node name="Gameplay" type="Node2D" unique_id=1477385624]
 script = ExtResource("2_gamepad")
 
-[node name="Cursor" parent="." instance=ExtResource("3_cursor")]
+[node name="Cursor" parent="." unique_id=2069953329 instance=ExtResource("3_cursor")]
 position = Vector2(640, 360)
 
-[node name="Leaves" type="Node2D" parent="."]
+[node name="Leaves" type="Node2D" parent="." unique_id=1235838444]
 
-[node name="Leaf1" parent="Leaves" instance=ExtResource("1_leaf")]
+[node name="Leaf1" parent="Leaves" unique_id=954362350 instance=ExtResource("1_leaf")]
 position = Vector2(319, 381)
 
-[node name="Leaf2" parent="Leaves" instance=ExtResource("1_leaf")]
+[node name="Leaf2" parent="Leaves" unique_id=1284479726 instance=ExtResource("1_leaf")]
 position = Vector2(730, 329)
 
-[node name="Leaf3" parent="Leaves" instance=ExtResource("1_leaf")]
+[node name="Leaf3" parent="Leaves" unique_id=159014923 instance=ExtResource("1_leaf")]
 position = Vector2(515, 531)
