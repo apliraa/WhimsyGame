@@ -7,12 +7,15 @@ public partial class GamepadController : Node
 	[Export] public float StickDeadzone { get; set; } = 0.2f;
 
 	private readonly List<Leaf> leaves = new();
+	private PhaseController phaseController;
 	private GamepadCursor cursor;
 	private Leaf controlledLeaf;
+	private bool waitForInteractRelease;
 
 	public override void _Ready()
 	{
 		cursor = GetNode<GamepadCursor>("Cursor");
+		phaseController = GetNodeOrNull<PhaseController>("PhaseController");
 
 		foreach (Node node in GetTree().GetNodesInGroup("leaves"))
 		{
@@ -34,6 +37,29 @@ public partial class GamepadController : Node
 		if (interactPressed || moveInput != Vector2.Zero)
 		{
 			cursor.Visible = true;
+		}
+
+		if (phaseController != null && phaseController.IsTransitioning)
+		{
+			if (controlledLeaf != null)
+			{
+				controlledLeaf.EndControllerControl();
+				controlledLeaf.SetControllerSelected(false);
+				controlledLeaf = null;
+			}
+
+			waitForInteractRelease = true;
+			return;
+		}
+
+		if (waitForInteractRelease)
+		{
+			if (!interactPressed)
+			{
+				waitForInteractRelease = false;
+			}
+
+			return;
 		}
 
 		if (controlledLeaf == null)

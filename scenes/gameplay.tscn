@@ -1,201 +1,210 @@
 [gd_scene format=3 uid="uid://cb8ju37jjruh4"]
 
-[ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf"]
-[ext_resource type="Script" uid="uid://cfkli20q5ydoo" path="res://scripts/GamepadController.cs" id="2_gamepad"]
-[ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="3_cursor"]
-[ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="4_e124b"]
-[ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="4_phase"]
-[ext_resource type="PackedScene" path="res://scenes/form_target_wide.tscn" id="5_target_wide"]
-[ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="7_outside_wide"]
-[ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="9_mouse"]
+[ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf_set"]
+[ext_resource type="Script" uid="uid://cfkli20q5ydoo" path="res://scripts/GamepadController.cs" id="12_gamepad"]
+[ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="13_cursor"]
+[ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="14_phase"]
+[ext_resource type="PackedScene" path="res://scenes/form_target_butterfly.tscn" id="15_butterfly"]
+[ext_resource type="PackedScene" path="res://scenes/form_target_mushroom.tscn" id="16_mushroom"]
+[ext_resource type="PackedScene" path="res://scenes/form_target_star.tscn" id="17_star"]
+[ext_resource type="PackedScene" path="res://scenes/form_target_cloud.tscn" id="18_cloud"]
+[ext_resource type="PackedScene" path="res://scenes/form_target_duck.tscn" id="19_duck"]
+[ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="20_outside"]
+[ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="21_mouse"]
+[ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tu8j1"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_a"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ungyi"]
-noise = SubResource("FastNoiseLite_tu8j1")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_a"]
+noise = SubResource("FastNoiseLite_cloud_a")
 seamless = true
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pfd1l"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_b"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_am0fo"]
-noise = SubResource("FastNoiseLite_pfd1l")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_b"]
+noise = SubResource("FastNoiseLite_cloud_b")
 seamless = true
 
-[sub_resource type="Gradient" id="Gradient_101mb"]
+[sub_resource type="Gradient" id="Gradient_cloud_a"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0usb0"]
-gradient = SubResource("Gradient_101mb")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloud_a"]
+gradient = SubResource("Gradient_cloud_a")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k41lo"]
-shader = ExtResource("4_e124b")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_a"]
+shader = ExtResource("22_cloud_shader")
 shader_parameter/pixelation = Vector2(256, 256)
-shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_ungyi")
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_cloud_a")
 shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
-shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_am0fo")
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_b")
 shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
 shader_parameter/center_pos = Vector2(0.5, 0.5)
 shader_parameter/position_impact = 0.75
-shader_parameter/color_gardient = SubResource("GradientTexture2D_0usb0")
+shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_a")
 shader_parameter/clear_radius = 0.53999998792992
 shader_parameter/fade_edge = 0.26999999396496
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hbo4f"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_c"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_101mb"]
-noise = SubResource("FastNoiseLite_hbo4f")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_c"]
+noise = SubResource("FastNoiseLite_cloud_c")
 seamless = true
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qixtg"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cloud_d"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ctvyo"]
-noise = SubResource("FastNoiseLite_qixtg")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cloud_d"]
+noise = SubResource("FastNoiseLite_cloud_d")
 seamless = true
 
-[sub_resource type="Gradient" id="Gradient_e124b"]
+[sub_resource type="Gradient" id="Gradient_cloud_b"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nt65e"]
-gradient = SubResource("Gradient_e124b")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloud_b"]
+gradient = SubResource("Gradient_cloud_b")
 fill = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbo4f"]
-shader = ExtResource("4_e124b")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_b"]
+shader = ExtResource("22_cloud_shader")
 shader_parameter/pixelation = Vector2(1280, 720)
-shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_101mb")
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_cloud_c")
 shader_parameter/scroll_speed1 = Vector2(0.02, 0.007)
-shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_ctvyo")
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_d")
 shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
 shader_parameter/center_pos = Vector2(0.5, 0.5)
 shader_parameter/position_impact = 0.75
-shader_parameter/color_gardient = SubResource("GradientTexture2D_nt65e")
+shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_b")
 shader_parameter/clear_radius = 0.55999998748288
 shader_parameter/fade_edge = 0.85999998077728
 
-[node name="Gameplay" type="Node2D" unique_id=1341894659]
-script = ExtResource("2_gamepad")
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("12_gamepad")
 
-[node name="Backgrounds" type="Node2D" parent="." unique_id=1500406606]
+[node name="Backgrounds" type="Node2D" parent="."]
 z_index = -10
 
-[node name="Stage0" type="ColorRect" parent="Backgrounds" unique_id=85017332]
+[node name="Stage0" type="ColorRect" parent="Backgrounds"]
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.08, 0.12, 0.2, 1)
 
-[node name="Stage1" type="ColorRect" parent="Backgrounds" unique_id=216684383]
+[node name="Stage1" type="ColorRect" parent="Backgrounds"]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.2, 0.12, 0.08, 1)
 
-[node name="Stage2" type="ColorRect" parent="Backgrounds" unique_id=780215063]
+[node name="Stage2" type="ColorRect" parent="Backgrounds"]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.12, 0.2, 0.14, 1)
 
-[node name="Stage3" type="ColorRect" parent="Backgrounds" unique_id=1476488377]
+[node name="Stage3" type="ColorRect" parent="Backgrounds"]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.18, 0.1, 0.22, 1)
 
-[node name="Stage4" type="ColorRect" parent="Backgrounds" unique_id=309125426]
-visible = false
-offset_right = 1280.0
-offset_bottom = 720.0
-mouse_filter = 2
-color = Color(0.2, 0.18, 0.08, 1)
-
-[node name="Stage5" type="ColorRect" parent="Backgrounds" unique_id=1184392664]
+[node name="Stage4" type="ColorRect" parent="Backgrounds"]
 visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.08, 0.18, 0.2, 1)
 
-[node name="FormTargets" type="Node2D" parent="." unique_id=1094769285]
+[node name="FormTargets" type="Node2D" parent="."]
 
-[node name="Target1Square0" parent="FormTargets" unique_id=255283632 instance=ExtResource("5_target_wide")]
+[node name="ButterflyTarget" parent="FormTargets" instance=ExtResource("15_butterfly")]
 position = Vector2(640, 360)
 
-[node name="Target2Squares60" parent="FormTargets" unique_id=154306935 instance=ExtResource("5_target_wide")]
+[node name="MushroomTarget" parent="FormTargets" instance=ExtResource("16_mushroom")]
 visible = false
 position = Vector2(640, 360)
-rotation = 1.0471976
-scale = Vector2(2, 1)
 
-[node name="Target3Squares180" parent="FormTargets" unique_id=1420123929 instance=ExtResource("5_target_wide")]
+[node name="StarTarget" parent="FormTargets" instance=ExtResource("17_star")]
 visible = false
 position = Vector2(640, 360)
-rotation = 3.1415927
-scale = Vector2(1, 3)
 
-[node name="Target1Square80" parent="FormTargets" unique_id=2074003674 instance=ExtResource("5_target_wide")]
+[node name="CloudTarget" parent="FormTargets" instance=ExtResource("18_cloud")]
 visible = false
 position = Vector2(640, 360)
-rotation = 1.3962634
 
-[node name="Target2Squares270" parent="FormTargets" unique_id=619529000 instance=ExtResource("5_target_wide")]
+[node name="DuckTarget" parent="FormTargets" instance=ExtResource("19_duck")]
 visible = false
 position = Vector2(640, 360)
-rotation = 4.712389
-scale = Vector2(1, 2)
 
-[node name="Target3Squares360" parent="FormTargets" unique_id=802479770 instance=ExtResource("5_target_wide")]
+[node name="OutsideTriggers" type="Node2D" parent="."]
+
+[node name="OutsideTrigger0" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+
+[node name="OutsideTrigger1" parent="OutsideTriggers" instance=ExtResource("20_outside")]
 visible = false
+
+[node name="OutsideTrigger2" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+visible = false
+
+[node name="OutsideTrigger3" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+visible = false
+
+[node name="OutsideTrigger4" parent="OutsideTriggers" instance=ExtResource("20_outside")]
+visible = false
+
+[node name="Leaves" parent="." instance=ExtResource("1_leaf_set")]
+
+[node name="ValidationDebug" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 760.0
+offset_bottom = 330.0
+mouse_filter = 2
+z_index = 100
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "Validação debug"
+
+[node name="PhaseMessage" type="Label" parent="."]
+visible = false
+offset_left = 240.0
+offset_top = 285.0
+offset_right = 1040.0
+offset_bottom = 435.0
+mouse_filter = 2
+z_index = 110
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "Parabéns! Fase 1 concluída!\nPróxima fase em instantes..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cursor" parent="." instance=ExtResource("13_cursor")]
 position = Vector2(640, 360)
-rotation = 6.2831855
-scale = Vector2(3, 1)
 
-[node name="OutsideTriggers" type="Node2D" parent="." unique_id=2123510496]
+[node name="PhaseController" type="Node" parent="."]
+script = ExtResource("14_phase")
+RequiredCoverage = 0.99
+DebugValidation = true
+DebugLogInterval = 0.5
 
-[node name="OutsideTrigger0" parent="OutsideTriggers" unique_id=335529248 instance=ExtResource("7_outside_wide")]
-material = SubResource("ShaderMaterial_k41lo")
+[node name="MouseController" type="Node" parent="."]
+script = ExtResource("21_mouse")
 
-[node name="OutsideTrigger1" parent="OutsideTriggers" unique_id=256285970 instance=ExtResource("7_outside_wide")]
-visible = false
+[node name="PhaseTransitionTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 
-[node name="OutsideTrigger2" parent="OutsideTriggers" unique_id=506476740 instance=ExtResource("7_outside_wide")]
-visible = false
+[node name="Shader" type="CanvasLayer" parent="."]
 
-[node name="OutsideTrigger3" parent="OutsideTriggers" unique_id=1904844560 instance=ExtResource("7_outside_wide")]
-visible = false
-
-[node name="OutsideTrigger4" parent="OutsideTriggers" unique_id=1208631425 instance=ExtResource("7_outside_wide")]
-visible = false
-
-[node name="OutsideTrigger5" parent="OutsideTriggers" unique_id=476966252 instance=ExtResource("7_outside_wide")]
-visible = false
-
-[node name="PhaseController" type="Node" parent="." unique_id=72761639]
-script = ExtResource("4_phase")
-
-[node name="MouseController" type="Node" parent="." unique_id=1436735146]
-script = ExtResource("9_mouse")
-
-[node name="Cursor" parent="." unique_id=192493080 instance=ExtResource("3_cursor")]
-position = Vector2(640, 360)
-
-[node name="Leaves" type="Node2D" parent="." unique_id=724295382]
-
-[node name="Leaf1" parent="Leaves" unique_id=615281400 instance=ExtResource("1_leaf")]
-position = Vector2(319, 381)
-
-[node name="Leaf2" parent="Leaves" unique_id=451392592 instance=ExtResource("1_leaf")]
-position = Vector2(730, 329)
-
-[node name="Leaf3" parent="Leaves" unique_id=1067399845 instance=ExtResource("1_leaf")]
-position = Vector2(515, 531)
-
-[node name="Shader" type="CanvasLayer" parent="." unique_id=1291835143]
-
-[node name="ColorRect" type="ColorRect" parent="Shader" unique_id=1913479391]
+[node name="ColorRect" type="ColorRect" parent="Shader"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_hbo4f")
+material = SubResource("ShaderMaterial_cloud_b")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
