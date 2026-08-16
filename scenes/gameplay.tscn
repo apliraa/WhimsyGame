@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cb8ju37jjruh4"]
+[gd_scene format=3 uid="uid://2d62ruj0jftn"]
 
 [ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf_set"]
 [ext_resource type="Texture2D" uid="uid://dbei1wj7fnabd" path="res://assets/sprites/Backgrounds/Picnic-Background-Fundo.png" id="2_bhmdk"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://27rae1lx3rpm" path="res://assets/Sfx/sspsurvival-sound-from-the-window-dog-barking-birds-winter-village-12370.wav" id="18_pv71h"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_duck.tscn" id="19_duck"]
 [ext_resource type="Script" uid="uid://co3u8q8dje02s" path="res://scripts/background_noise.gd" id="19_m6b5a"]
+[ext_resource type="Texture2D" uid="uid://chwfykvksh1a1" path="res://assets/sprites/Menu/Congrats.png" id="20_mesn4"]
 [ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="20_outside"]
 [ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="21_mouse"]
 [ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
@@ -217,3 +218,13 @@ script = ExtResource("17_pv71h")
 [node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="." unique_id=835191690]
 stream = ExtResource("18_pv71h")
 script = ExtResource("19_m6b5a")
+
+[node name="PhaseSprite" type="TextureRect" parent="." unique_id=744541257]
+visible = false
+z_index = 100
+offset_left = 184.0
+offset_top = 64.00001
+offset_right = 304.0
+offset_bottom = 94.00001
+scale = Vector2(2.2499993, 2.2499993)
+texture = ExtResource("20_mesn4")

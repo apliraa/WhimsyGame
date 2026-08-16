@@ -27,7 +27,7 @@ public partial class PhaseController : Node
 	private double debugLogTimer;
 	private Timer phaseTransitionTimer;
 	private Label debugLabel;
-	private Label phaseMessage;
+	private TextureRect phaseMessageSprite;
 	private bool phaseTransitioning;
 	private int pendingNextPhase = -1;
 
@@ -41,7 +41,7 @@ public partial class PhaseController : Node
 		CollectOutsideTriggers();
 		CollectBackgrounds();
 		debugLabel = GetNodeOrNull<Label>("../ValidationDebug");
-		phaseMessage = GetNodeOrNull<Label>("../PhaseMessage");
+		phaseMessageSprite = GetNodeOrNull<TextureRect>("../PhaseSprite");
 		phaseTransitionTimer = GetNodeOrNull<Timer>("../PhaseTransitionTimer");
 		if (phaseTransitionTimer != null)
 		{
@@ -298,13 +298,8 @@ public partial class PhaseController : Node
 		currentPhase = -1;
 		phaseTransitioning = true;
 
-		if (phaseMessage != null)
-		{
-			phaseMessage.Text = pendingNextPhase >= formTargets.Count
-				? "Parabéns!\nVocê completou todas as fases!"
-				: $"Parabéns! Fase {acceptedPhase + 1} concluída!\nPróxima fase em instantes...";
-			phaseMessage.Visible = true;
-		}
+		if(phaseMessageSprite !=null)
+			phaseMessageSprite.Visible = true;
 
 		if (phaseTransitionTimer != null)
 		{
@@ -327,9 +322,9 @@ public partial class PhaseController : Node
 		int nextPhase = pendingNextPhase;
 		pendingNextPhase = -1;
 
-		if (phaseMessage != null)
+		if (phaseMessageSprite != null)
 		{
-			phaseMessage.Visible = false;
+			phaseMessageSprite.Visible = false;
 		}
 
 		if (nextPhase >= formTargets.Count)
