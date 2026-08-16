@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://jy4bogyicqfb"]
+
+[ext_resource type="Script" uid="uid://ku5rmy6s0tmy" path="res://scripts/OptionsMenu.cs" id="1_j6yq7"]
+
+[node name="Options" type="Control" unique_id=480204516 node_paths=PackedStringArray("Botão1", "Botão2", "Back", "Anim")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1279.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j6yq7")
+"Botão1" = NodePath("Button")
+"Botão2" = NodePath("Button2")
+Back = NodePath("Back")
+Anim = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1710317133]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+offset_transform_enabled = true
+color = Color(0, 1, 1, 0.4509804)
+
+[node name="Back" type="Button" parent="." unique_id=1501016431 groups=["Button"]]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 54.0
+text = "Back "
+
+[node name="Button" type="Button" parent="." unique_id=180095239 groups=["Button"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 495.0
+offset_top = 272.0
+offset_right = 783.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BOTAO"
+
+[node name="Button2" type="Button" parent="." unique_id=753539535 groups=["Button"]]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 352.0
+offset_right = 783.0
+offset_bottom = 416.0
+text = "BOTAO 2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2115172284]

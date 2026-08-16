@@ -1,0 +1,129 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/leaf.tscn" id="1_leaf"]
+[ext_resource type="Script" path="res://scripts/GamepadController.cs" id="2_gamepad"]
+[ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="3_cursor"]
+[ext_resource type="Script" path="res://scripts/PhaseController.cs" id="4_phase"]
+[ext_resource type="PackedScene" path="res://scenes/form_target_wide.tscn" id="5_target_wide"]
+[ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="7_outside_wide"]
+[ext_resource type="Script" path="res://scripts/MouseController.cs" id="9_mouse"]
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("2_gamepad")
+
+[node name="Backgrounds" type="Node2D" parent="."]
+z_index = -10
+
+[node name="Stage0" type="ColorRect" parent="Backgrounds"]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.08, 0.12, 0.2, 1)
+
+[node name="Stage1" type="ColorRect" parent="Backgrounds"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.2, 0.12, 0.08, 1)
+
+[node name="Stage2" type="ColorRect" parent="Backgrounds"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.12, 0.2, 0.14, 1)
+
+[node name="Stage3" type="ColorRect" parent="Backgrounds"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.18, 0.1, 0.22, 1)
+
+[node name="Stage4" type="ColorRect" parent="Backgrounds"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.2, 0.18, 0.08, 1)
+
+[node name="Stage5" type="ColorRect" parent="Backgrounds"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.08, 0.18, 0.2, 1)
+
+[node name="FormTargets" type="Node2D" parent="."]
+
+[node name="Target1Square0" parent="FormTargets" instance=ExtResource("5_target_wide")]
+position = Vector2(640, 360)
+
+[node name="Target2Squares60" parent="FormTargets" instance=ExtResource("5_target_wide")]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(2, 1)
+rotation = 1.04719755
+
+[node name="Target3Squares180" parent="FormTargets" instance=ExtResource("5_target_wide")]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(1, 3)
+rotation = 3.14159274
+
+[node name="Target1Square80" parent="FormTargets" instance=ExtResource("5_target_wide")]
+visible = false
+position = Vector2(640, 360)
+rotation = 1.3962634
+
+[node name="Target2Squares270" parent="FormTargets" instance=ExtResource("5_target_wide")]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(1, 2)
+rotation = 4.71238899
+
+[node name="Target3Squares360" parent="FormTargets" instance=ExtResource("5_target_wide")]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(3, 1)
+rotation = 6.28318548
+
+[node name="OutsideTriggers" type="Node2D" parent="."]
+
+[node name="OutsideTrigger0" parent="OutsideTriggers" instance=ExtResource("7_outside_wide")]
+
+[node name="OutsideTrigger1" parent="OutsideTriggers" instance=ExtResource("7_outside_wide")]
+visible = false
+
+[node name="OutsideTrigger2" parent="OutsideTriggers" instance=ExtResource("7_outside_wide")]
+visible = false
+
+[node name="OutsideTrigger3" parent="OutsideTriggers" instance=ExtResource("7_outside_wide")]
+visible = false
+
+[node name="OutsideTrigger4" parent="OutsideTriggers" instance=ExtResource("7_outside_wide")]
+visible = false
+
+[node name="OutsideTrigger5" parent="OutsideTriggers" instance=ExtResource("7_outside_wide")]
+visible = false
+
+[node name="PhaseController" type="Node" parent="."]
+script = ExtResource("4_phase")
+
+[node name="MouseController" type="Node" parent="."]
+script = ExtResource("9_mouse")
+
+[node name="Cursor" parent="." instance=ExtResource("3_cursor")]
+position = Vector2(640, 360)
+
+[node name="Leaves" type="Node2D" parent="."]
+
+[node name="Leaf1" parent="Leaves" instance=ExtResource("1_leaf")]
+position = Vector2(319, 381)
+
+[node name="Leaf2" parent="Leaves" instance=ExtResource("1_leaf")]
+position = Vector2(730, 329)
+
+[node name="Leaf3" parent="Leaves" instance=ExtResource("1_leaf")]
+position = Vector2(515, 531)
