@@ -8,25 +8,51 @@ public partial class Leaf : Sprite2D
 	public float ControllerRotationSpeed { get; set; } = 3.5f;
 	[Export(PropertyHint.Range, "0,10,0.05")]
 	public float MouseRotationSpeed { get; set; } = 1.0f;
+	[Export(PropertyHint.Range, "0.05,1,0.01")]
+	public float PlacementAnimationDuration { get; set; } = 0.16f;
+	[Export(PropertyHint.Range, "0,20,0.5")]
+	public float PlacementAnimationLift { get; set; } = 3.0f;
 
 	private bool mouseControlled = false;
 	private bool controllerControlled = false;
 	private Area2D leafHitbox;
+	private CollisionShape2D collisionShape;
+	private CollisionPolygon2D collisionPolygon;
 	private int formOverlapCount;
 	private int outsideOverlapCount;
+	private static int nextStackOrder;
+	private static int nextPlacedStackOrder = 80;
+	private const int ControlledStackOrder = 90;
+	private int initialStackOrder;
+	private int stackOrder;
+	private bool hasBeenPlaced;
+	private Tween placementTween;
+	private Vector2 baseOffset;
 
+	public bool IsMouseControlled => mouseControlled;
 	public bool IsControllerControlled => controllerControlled;
+	public bool IsBeingControlled => mouseControlled || controllerControlled;
 	public bool dentro_da_forma { get; private set; }
 	public bool fora_da_folha { get; private set; }
 
 	public override void _Ready()
 	{
+		initialStackOrder = nextStackOrder++;
+		stackOrder = initialStackOrder;
+		ZIndex = stackOrder;
+		baseOffset = Offset;
+
 		if (SignalBus.Instance != null)
 		{
 			SignalBus.Instance.LeafFocused += OnAnyLeafFocused;
 		}
 
 		leafHitbox = GetNodeOrNull<Area2D>("LeafHitbox");
+		collisionShape = GetNodeOrNull<CollisionShape2D>(
+			"LeafHitbox/CollisionShape2D");
+		collisionPolygon = GetNodeOrNull<CollisionPolygon2D>(
+			"LeafHitbox/CollisionPolygon2D");
+
 		if (leafHitbox != null)
 		{
 			leafHitbox.AreaEntered += OnLeafHitboxAreaEntered;
@@ -50,26 +76,47 @@ public partial class Leaf : Sprite2D
 
 	public void BeginControllerControl()
 	{
+		CancelPlacementAnimation();
 		controllerControlled = true;
-		ZIndex = 5;
+		BringToFront();
 	}
 
 	public void EndControllerControl()
 	{
+		bool wasControllerControlled = controllerControlled;
 		controllerControlled = false;
-		ZIndex = mouseControlled ? 5 : 0;
+
+		if (wasControllerControlled)
+		{
+			RegisterFirstPlacement();
+		}
+
+		ZIndex = mouseControlled ? ControlledStackOrder : stackOrder;
 	}
 
 	public void BeginMouseControl()
 	{
+		CancelPlacementAnimation();
 		mouseControlled = true;
-		ZIndex = 5;
+		BringToFront();
 	}
 
 	public void EndMouseControl()
 	{
+		bool wasMouseControlled = mouseControlled;
 		mouseControlled = false;
-		ZIndex = controllerControlled ? 5 : 0;
+
+		if (wasMouseControlled)
+		{
+			RegisterFirstPlacement();
+		}
+
+		ZIndex = controllerControlled ? ControlledStackOrder : stackOrder;
+
+		if (wasMouseControlled)
+		{
+			PlayPlacementAnimation();
+		}
 	}
 
 	public void MoveWithMouse(Vector2 globalPosition)
@@ -122,65 +169,56 @@ public partial class Leaf : Sprite2D
 
 	public bool ContainsGlobalPoint(Vector2 globalPoint)
 	{
-		CollisionShape2D collisionShape = GetNodeOrNull<CollisionShape2D>(
-			"LeafHitbox/CollisionShape2D");
-		if (collisionShape != null && collisionShape.Shape is ConvexPolygonShape2D convexPolygon)
-		{
-			return IsPointInsideConvexPolygon(
-				collisionShape.ToLocal(globalPoint),
-				convexPolygon.Points);
-		}
-
-		if (collisionShape != null && collisionShape.Shape is RectangleShape2D rectangle)
-		{
-			Rect2 localBounds = new(-rectangle.Size * 0.5f, rectangle.Size);
-			return localBounds.HasPoint(collisionShape.ToLocal(globalPoint));
-		}
-
-		if (Texture == null)
+		Vector2[] localPoints = GetLocalHitboxPoints();
+		if (localPoints.Length < 3)
 		{
 			return false;
 		}
 
-		Vector2 textureSize = Texture.GetSize();
-		Rect2 textureBounds = new(-textureSize * 0.5f, textureSize);
-		return textureBounds.HasPoint(ToLocal(globalPoint));
-	}
-
-	private bool IsPointInsideConvexPolygon(Vector2 point, Vector2[] polygon)
-	{
-		bool hasPositiveCross = false;
-		bool hasNegativeCross = false;
-
-		for (int index = 0; index < polygon.Length; index++)
+		Node2D geometryNode = collisionPolygon != null
+			? collisionPolygon
+			: collisionShape;
+		if (geometryNode == null)
 		{
-			Vector2 current = polygon[index];
-			Vector2 next = polygon[(index + 1) % polygon.Length];
-			float cross = (next - current).Cross(point - current);
-
-			if (cross > 0.001f)
-			{
-				hasPositiveCross = true;
-			}
-			else if (cross < -0.001f)
-			{
-				hasNegativeCross = true;
-			}
-
-			if (hasPositiveCross && hasNegativeCross)
-			{
-				return false;
-			}
+			return false;
 		}
 
-		return true;
+		return IsPointInsidePolygon(
+			geometryNode.ToLocal(globalPoint),
+			localPoints);
+	}
+
+	public Vector2[] GetGlobalHitboxPoints()
+	{
+		Vector2[] localPoints = GetLocalHitboxPoints();
+		if (localPoints.Length == 0)
+		{
+			return new Vector2[0];
+		}
+
+		Node2D geometryNode = collisionPolygon != null
+			? collisionPolygon
+			: collisionShape;
+		if (geometryNode == null)
+		{
+			return new Vector2[0];
+		}
+
+		Vector2[] globalPoints = new Vector2[localPoints.Length];
+		for (int index = 0; index < localPoints.Length; index++)
+		{
+			globalPoints[index] = geometryNode.ToGlobal(localPoints[index]);
+		}
+
+		return globalPoints;
 	}
 
 	public void ResetPhaseDetection()
 	{
 		formOverlapCount = 0;
 		outsideOverlapCount = 0;
-		UpdatePhaseFlags();
+		dentro_da_forma = false;
+		fora_da_folha = false;
 	}
 
 	public void RefreshPhaseDetection()
@@ -196,26 +234,114 @@ public partial class Leaf : Sprite2D
 			}
 		}
 
-		UpdatePhaseFlags();
+		UpdatePhaseFlagsFromPhysics();
+	}
+
+	public void RefreshPhaseDetection(FormTarget target)
+	{
+		RefreshPhaseDetection(target, target?.GetGlobalTargetPoints());
+	}
+
+	public void RefreshPhaseDetection(FormTarget target, Vector2[] targetPoints)
+	{
+		if (target == null || targetPoints == null)
+		{
+			ResetPhaseDetection();
+			return;
+		}
+
+		dentro_da_forma = target.IntersectsLeaf(this, targetPoints);
+		fora_da_folha = dentro_da_forma
+			&& !target.ContainsEntireLeaf(this, targetPoints);
 	}
 
 	public void SetControllerSelected(bool selected)
 	{
-		ZIndex = selected || mouseControlled || controllerControlled ? 5 : 0;
+		if (!selected && !mouseControlled && !controllerControlled)
+		{
+			ZIndex = stackOrder;
+		}
 	}
-	
+
 	public void OnAnyLeafFocused(Node2D focusedLeaf)
 	{
 		if (focusedLeaf != this && !mouseControlled && !controllerControlled)
 		{
-			ZIndex = 0;
+			ZIndex = stackOrder;
 		}
+	}
+
+	private void BringToFront()
+	{
+		ZIndex = ControlledStackOrder;
+	}
+
+	public void ResetPlacementOrder()
+	{
+		CancelPlacementAnimation();
+		hasBeenPlaced = false;
+		stackOrder = initialStackOrder;
+		ZIndex = stackOrder;
+	}
+
+	private void RegisterFirstPlacement()
+	{
+		if (hasBeenPlaced)
+		{
+			return;
+		}
+
+		hasBeenPlaced = true;
+		stackOrder = nextPlacedStackOrder--;
+	}
+
+	private void PlayPlacementAnimation()
+	{
+		CancelPlacementAnimation();
+
+		if (PlacementAnimationDuration <= 0.0f
+			|| PlacementAnimationLift <= 0.0f)
+		{
+			return;
+		}
+
+		float liftDuration = PlacementAnimationDuration * 0.25f;
+		float settleDuration = PlacementAnimationDuration - liftDuration;
+		Vector2 liftedOffset = baseOffset
+			+ new Vector2(0.0f, -PlacementAnimationLift);
+
+		placementTween = CreateTween();
+		placementTween.SetTrans(Tween.TransitionType.Sine);
+		placementTween.SetEase(Tween.EaseType.Out);
+		placementTween.TweenProperty(
+			this,
+			"offset",
+			liftedOffset,
+			liftDuration);
+		placementTween.SetTrans(Tween.TransitionType.Sine);
+		placementTween.SetEase(Tween.EaseType.InOut);
+		placementTween.TweenProperty(
+			this,
+			"offset",
+			baseOffset,
+			settleDuration);
+	}
+
+	private void CancelPlacementAnimation()
+	{
+		if (placementTween != null)
+		{
+			placementTween.Kill();
+			placementTween = null;
+		}
+
+		Offset = baseOffset;
 	}
 
 	private void OnLeafHitboxAreaEntered(Area2D area)
 	{
 		RegisterPhaseArea(area);
-		UpdatePhaseFlags();
+		UpdatePhaseFlagsFromPhysics();
 	}
 
 	private void OnLeafHitboxAreaExited(Area2D area)
@@ -230,7 +356,7 @@ public partial class Leaf : Sprite2D
 			outsideOverlapCount = Mathf.Max(0, outsideOverlapCount - 1);
 		}
 
-		UpdatePhaseFlags();
+		UpdatePhaseFlagsFromPhysics();
 	}
 
 	private void RegisterPhaseArea(Area2D area)
@@ -246,56 +372,138 @@ public partial class Leaf : Sprite2D
 		}
 	}
 
-	private void UpdatePhaseFlags()
+	private void UpdatePhaseFlagsFromPhysics()
 	{
 		dentro_da_forma = formOverlapCount > 0;
 		fora_da_folha = outsideOverlapCount > 0;
 	}
 
-	private void KeepInsideViewport()
+	private Vector2[] GetLocalHitboxPoints()
 	{
-		Rect2 viewport = GetViewportRect();
-		Vector2 halfSize = GetHitboxHalfSize();
-
-		float minX = viewport.Position.X + halfSize.X;
-		float maxX = viewport.Position.X + viewport.Size.X - halfSize.X;
-		float minY = viewport.Position.Y + halfSize.Y;
-		float maxY = viewport.Position.Y + viewport.Size.Y - halfSize.Y;
-
-		if (minX > maxX)
+		if (collisionPolygon != null && collisionPolygon.Polygon.Length > 0)
 		{
-			minX = maxX = viewport.Position.X + viewport.Size.X * 0.5f;
+			return collisionPolygon.Polygon;
 		}
 
-		if (minY > maxY)
+		if (collisionShape != null && collisionShape.Shape is ConvexPolygonShape2D convexPolygon)
 		{
-			minY = maxY = viewport.Position.Y + viewport.Size.Y * 0.5f;
+			return convexPolygon.Points;
 		}
 
-		GlobalPosition = new Vector2(
-			Mathf.Clamp(GlobalPosition.X, minX, maxX),
-			Mathf.Clamp(GlobalPosition.Y, minY, maxY));
-	}
-
-	private Vector2 GetHitboxHalfSize()
-	{
-		CollisionShape2D collisionShape = GetNodeOrNull<CollisionShape2D>(
-			"LeafHitbox/CollisionShape2D");
 		if (collisionShape != null && collisionShape.Shape is RectangleShape2D rectangle)
 		{
-			return new Vector2(
-				rectangle.Size.X * Mathf.Abs(GlobalScale.X),
-				rectangle.Size.Y * Mathf.Abs(GlobalScale.Y)) * 0.5f;
+			Vector2 halfSize = rectangle.Size * 0.5f;
+			return new Vector2[]
+			{
+				new(-halfSize.X, -halfSize.Y),
+				new(halfSize.X, -halfSize.Y),
+				new(halfSize.X, halfSize.Y),
+				new(-halfSize.X, halfSize.Y)
+			};
 		}
 
 		if (Texture != null)
 		{
-			Vector2 textureSize = Texture.GetSize();
-			return new Vector2(
-				textureSize.X * Mathf.Abs(GlobalScale.X),
-				textureSize.Y * Mathf.Abs(GlobalScale.Y)) * 0.5f;
+			Vector2 halfSize = Texture.GetSize() * 0.5f;
+			return new Vector2[]
+			{
+				new(-halfSize.X, -halfSize.Y),
+				new(halfSize.X, -halfSize.Y),
+				new(halfSize.X, halfSize.Y),
+				new(-halfSize.X, halfSize.Y)
+			};
 		}
 
-		return Vector2.Zero;
+		return new Vector2[0];
+	}
+
+	private bool IsPointInsidePolygon(Vector2 point, Vector2[] polygon)
+	{
+		bool inside = false;
+		for (int index = 0, previousIndex = polygon.Length - 1;
+			index < polygon.Length;
+			previousIndex = index++)
+		{
+			Vector2 current = polygon[index];
+			Vector2 previous = polygon[previousIndex];
+			if (IsPointOnSegment(point, previous, current))
+			{
+				return true;
+			}
+
+			bool crossesHorizontalLine =
+				(current.Y > point.Y) != (previous.Y > point.Y);
+			if (!crossesHorizontalLine)
+			{
+				continue;
+			}
+
+			float intersectionX =
+			(previous.X - current.X) * (point.Y - current.Y)
+			/ (previous.Y - current.Y) + current.X;
+			if (point.X < intersectionX)
+			{
+				inside = !inside;
+			}
+		}
+
+		return inside;
+	}
+
+	private bool IsPointOnSegment(Vector2 point, Vector2 start, Vector2 end)
+	{
+		float cross = (end - start).Cross(point - start);
+		if (Mathf.Abs(cross) > 0.5f)
+		{
+			return false;
+		}
+
+		return point.X >= Mathf.Min(start.X, end.X) - 0.5f
+			&& point.X <= Mathf.Max(start.X, end.X) + 0.5f
+			&& point.Y >= Mathf.Min(start.Y, end.Y) - 0.5f
+			&& point.Y <= Mathf.Max(start.Y, end.Y) + 0.5f;
+	}
+
+	private void KeepInsideViewport()
+	{
+		Vector2[] globalPoints = GetGlobalHitboxPoints();
+		if (globalPoints.Length == 0)
+		{
+			return;
+		}
+
+		Vector2 min = globalPoints[0];
+		Vector2 max = globalPoints[0];
+		foreach (Vector2 point in globalPoints)
+		{
+			min = new Vector2(
+				Mathf.Min(min.X, point.X),
+				Mathf.Min(min.Y, point.Y));
+			max = new Vector2(
+				Mathf.Max(max.X, point.X),
+				Mathf.Max(max.Y, point.Y));
+		}
+
+		Rect2 viewport = GetViewportRect();
+		Vector2 correction = Vector2.Zero;
+		if (min.X < viewport.Position.X)
+		{
+			correction.X = viewport.Position.X - min.X;
+		}
+		else if (max.X > viewport.End.X)
+		{
+			correction.X = viewport.End.X - max.X;
+		}
+
+		if (min.Y < viewport.Position.Y)
+		{
+			correction.Y = viewport.Position.Y - min.Y;
+		}
+		else if (max.Y > viewport.End.Y)
+		{
+			correction.Y = viewport.End.Y - max.Y;
+		}
+
+		GlobalPosition += correction;
 	}
 }
