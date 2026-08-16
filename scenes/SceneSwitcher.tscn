@@ -2,21 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dv1eblwhjkcyk" path="res://scripts/SceneSwitcher.cs" id="1_ssicv"]
 
-[node name="SceneSwitcher" type="Node2D" unique_id=1593650967 node_paths=PackedStringArray("Rect")]
+[node name="SceneSwitcher" type="CanvasLayer" unique_id=1024477370 node_paths=PackedStringArray("Rect")]
 script = ExtResource("1_ssicv")
-Rect = NodePath("CanvasLayer/ColorRect")
+Rect = NodePath("ColorRect")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=287372693]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=590435481]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=344567126]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-<<<<<<< Updated upstream
-color = Color(1, 1, 1, 0)
-=======
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
->>>>>>> Stashed changes
+color = Color(0, 0, 0, 1)

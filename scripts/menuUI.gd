@@ -21,11 +21,18 @@ func on_button_hover(button: Button, is_hovered: bool) -> void:
 		anim_player.stop()
 
 func on_button_pressed(button: Button) -> void:
+
+	var switcher = get_node("/root/SceneSwitcher")
+	
 	match button.name:
 		"Play": 
-			var _game: bool = get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
+			var game_scene = load("res://scenes/gameplay.tscn")
+			switcher.TransitionToPacked(game_scene)
+			
 		"Credits":
-			var _credits: bool = get_tree().change_scene_to_file("res://scenes/CreditsUI.tscn")
+			var credits_scene = load("res://scenes/CreditsUI.tscn")
+			switcher.TransitionToPacked(credits_scene)
+			
 		"Quit":
 			get_tree().quit()
 
