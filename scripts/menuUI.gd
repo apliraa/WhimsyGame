@@ -8,7 +8,7 @@ func _ready() -> void:
 		
 	pass 
 	
-func on_button_hover(button: TextureButton, is_hovered: bool) -> void:
+func on_button_hover(button: Button, is_hovered: bool) -> void:
 	#pega o animation node filho do texturebutton 
 	var anim_player: AnimationPlayer = button.get_node_or_null("AnimationPlayer")
 	
@@ -20,18 +20,16 @@ func on_button_hover(button: TextureButton, is_hovered: bool) -> void:
 	else:
 		anim_player.stop()
 
-func on_button_pressed(button: TextureButton) -> void:
+func on_button_pressed(button: Button) -> void:
 	match button.name:
 		#"Play": 
 			#var _game: bool = get_tree().change_scene_to_file("res://Scenes/Menu/Main.tscn")
 		"Credits":
 			var _credits: bool = get_tree().change_scene_to_file("res://scenes/CreditsUI.tscn")
-		"Options":
-			var _options: bool = get_tree().change_scene_to_file("res://scenes/Options.tscn")
 		"Quit":
 			get_tree().quit()
 
-func mouse_interaction(button: TextureButton, state: String) -> void:
+func mouse_interaction(button: Button, state: String) -> void:
 	match state:
 		"exited":
 			button.modulate.a = 1

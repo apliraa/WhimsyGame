@@ -3,52 +3,54 @@
 [ext_resource type="Script" uid="uid://b7n2cyroo1vbk" path="res://scripts/menuUI.gd" id="1_811wr"]
 [ext_resource type="Texture2D" uid="uid://djfmy5iwgamq3" path="res://assets/sprites/Menu/button_cloud4.png" id="2_najbj"]
 
-[sub_resource type="Animation" id="Animation_najbj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Play:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(440, 84)]
-}
-
-[sub_resource type="Animation" id="Animation_1skp7"]
-resource_name = "hover"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Play:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1, 2, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(440, 82), Vector2(440, 84), Vector2(440, 86), Vector2(440, 84)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_najbj"]
-_data = {
-&"RESET": SubResource("Animation_najbj"),
-&"hover": SubResource("Animation_1skp7")
-}
+[sub_resource type="LabelSettings" id="LabelSettings_55kpd"]
+font_size = 37
+outline_size = 5
+outline_color = Color(0.25490198, 0.8, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_najbj"]
 font_size = 18
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_1skp7"]
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_1skp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(462, 115)]
+}
 
-[sub_resource type="Animation" id="Animation_6gh02"]
+[sub_resource type="Animation" id="Animation_najbj"]
+resource_name = "hover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(462, 113), Vector2(462, 115), Vector2(462, 117), Vector2(462, 115)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1skp7"]
+_data = {
+&"RESET": SubResource("Animation_1skp7"),
+&"hover": SubResource("Animation_najbj")
+}
+
+[sub_resource type="Animation" id="Animation_082ss"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -60,10 +62,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(440, 150)]
+"values": [Vector2(462, 190)]
 }
 
-[sub_resource type="Animation" id="Animation_082ss"]
+[sub_resource type="Animation" id="Animation_6gh02"]
 resource_name = "hover"
 length = 4.0
 loop_mode = 1
@@ -77,17 +79,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(1, 2, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(440, 150), Vector2(440, 152), Vector2(440, 154), Vector2(440, 152)]
+"values": [Vector2(462, 188), Vector2(462, 190), Vector2(462, 192), Vector2(462, 190)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia2ap"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_082ss"]
 _data = {
-&"RESET": SubResource("Animation_6gh02"),
-&"hover": SubResource("Animation_082ss")
+&"RESET": SubResource("Animation_082ss"),
+&"hover": SubResource("Animation_6gh02")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_6gh02"]
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_nh6aw"]
 length = 0.001
@@ -101,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(440, 214)]
+"values": [Vector2(462, 266)]
 }
 
 [sub_resource type="Animation" id="Animation_ia2ap"]
@@ -118,7 +117,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(1, 2, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(440, 214), Vector2(440, 216), Vector2(440, 218), Vector2(440, 216)]
+"values": [Vector2(462, 266), Vector2(462, 268), Vector2(462, 270), Vector2(462, 268)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nh6aw"]
@@ -126,11 +125,6 @@ _data = {
 &"RESET": SubResource("Animation_nh6aw"),
 &"hover": SubResource("Animation_ia2ap")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_55kpd"]
-font_size = 37
-outline_size = 5
-outline_color = Color(0.25490198, 0.8, 0, 1)
 
 [node name="Control" type="Control" unique_id=302165348]
 layout_mode = 3
@@ -149,6 +143,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32411522, 0.6652055, 0.6706541, 1)
+
+[node name="Label" type="Label" parent="." unique_id=464360941]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 32.0
+offset_right = 576.0
+offset_bottom = 83.0
+text = "Beleaf"
+label_settings = SubResource("LabelSettings_55kpd")
 
 [node name="EquipeNome" type="HBoxContainer" parent="." unique_id=456260761]
 layout_mode = 1
@@ -169,78 +172,117 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Equipe CNTRL'R"
 
-[node name="Play" type="TextureButton" parent="." unique_id=688828362 groups=["Button"]]
+[node name="Play" type="Button" parent="." unique_id=1919770205 groups=["Button"]]
 texture_filter = 1
 layout_mode = 0
-offset_left = 440.0
-offset_top = 84.0
-offset_right = 576.0
-offset_bottom = 188.0
-texture_normal = ExtResource("2_najbj")
-ignore_texture_size = true
+offset_left = 462.0
+offset_top = 115.0
+offset_right = 562.0099
+offset_bottom = 165.61032
+action_mode = 0
+flat = true
+metadata/_edit_group_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Play" unique_id=902098135]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_najbj")
+[node name="TextureRect" type="TextureRect" parent="Play" unique_id=1681723480]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_najbj")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Label" type="Label" parent="Play" unique_id=1062974122]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 46.0
-offset_right = 97.0
-offset_bottom = 72.0
+offset_left = 27.01001
+offset_top = 12.389999
+offset_right = 71.01001
+offset_bottom = 38.39
 text = "PLAY"
 label_settings = SubResource("LabelSettings_najbj")
 
-[node name="Credits" type="TextureButton" parent="." unique_id=1844054553 groups=["Button"]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Play" unique_id=902098135]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_1skp7")
+
+[node name="Credits" type="Button" parent="." unique_id=772541895 groups=["Button"]]
 texture_filter = 1
 layout_mode = 0
-offset_left = 440.0
-offset_top = 150.0
-offset_right = 568.0
-offset_bottom = 253.99988
-pivot_offset = Vector2(64, 128)
-texture_normal = ExtResource("2_najbj")
-ignore_texture_size = true
+offset_left = 462.0
+offset_top = 190.0
+offset_right = 562.01
+offset_bottom = 240.61069
+action_mode = 0
+flat = true
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Credits" unique_id=55731733]
+[node name="TextureRect" type="TextureRect" parent="Credits" unique_id=583963842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_najbj")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Credits" unique_id=771044490]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 47.0
-offset_right = 107.0
-offset_bottom = 70.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 86.0
+offset_bottom = 38.0
 text = "CREDITS"
-label_settings = SubResource("LabelSettings_1skp7")
+label_settings = SubResource("LabelSettings_najbj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Credits" unique_id=854200954]
-libraries/ = SubResource("AnimationLibrary_ia2ap")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Credits" unique_id=756184426]
+libraries/ = SubResource("AnimationLibrary_082ss")
 
-[node name="Quit" type="TextureButton" parent="." unique_id=379486824 groups=["Button"]]
+[node name="Quit" type="Button" parent="." unique_id=1960245860 groups=["Button"]]
 texture_filter = 1
 layout_mode = 0
-offset_left = 440.0
-offset_top = 214.0
-offset_right = 568.0
-offset_bottom = 342.00034
-texture_normal = ExtResource("2_najbj")
+offset_left = 462.0
+offset_top = 266.0
+offset_right = 562.01
+offset_bottom = 316.6107
+action_mode = 0
+flat = true
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Quit" unique_id=1621443649]
+[node name="TextureRect" type="TextureRect" parent="Quit" unique_id=1001054565]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_najbj")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Quit" unique_id=723005299]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 46.0
-offset_right = 94.0
-offset_bottom = 69.0
+offset_left = 28.0
+offset_top = 12.0
+offset_right = 72.0
+offset_bottom = 38.0
 text = "QUIT"
-label_settings = SubResource("LabelSettings_6gh02")
+label_settings = SubResource("LabelSettings_najbj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Quit" unique_id=900496743]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Quit" unique_id=1423234996]
 libraries/ = SubResource("AnimationLibrary_nh6aw")
-
-[node name="Label" type="Label" parent="." unique_id=464360941]
-layout_mode = 0
-offset_left = 456.0
-offset_top = 32.0
-offset_right = 576.0
-offset_bottom = 83.0
-text = "Beleaf"
-label_settings = SubResource("LabelSettings_55kpd")
