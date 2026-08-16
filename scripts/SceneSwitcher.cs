@@ -4,37 +4,27 @@ using System;
 public partial class SceneSwitcher : Node2D
 {
 	[Export] private ColorRect Rect;
-	[Export] private PackedScene NextScene;
 	
-	private bool IsOpening = true;
-	private bool IsClosing = false;
+	private Tween tween;
 	
-	public override void _Ready()
+	private void OpenScreen(float time = 1.0f)
 	{
-		// PackedScenes não instaciados
-		if (NextScene == null)
-		{
-			GD.PrintErr("NextScene not instantiated!");
-		}
-		
+		tween = CreateTween();
+		tween.TweenProperty(Rect, "color:a", 0.0f, time);
+	}
+	
+	private void CloseScreen(float time = 1.0f)
+	{
+		tween = CreateTween();
+		tween.TweenProperty(Rect, "color:a", 1.0f, time);
+	}
+	
+	public async void TransitionToPacked(PackedScene scene)
+	{
 		CloseScreen();
-	}
-	
-	private void OpenScreen()
-	{
-		Tween tween = CreateTween();
-		tween.TweenProperty(Rect, "color:a", 0.0f, 1.0f);
-	}
-	
-	private async void CloseScreen()
-	{
-		Tween tween = CreateTween();
-		tween.TweenProperty(Rect, "color:a", 1.0f, 1.0f);
 		
 		await ToSignal(tween, Tween.SignalName.Finished);
-		
-		GetTree().ChangeSceneToPacked(NextScene);
-		
+		GetTree().ChangeSceneToPacked(scene);
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		
 		OpenScreen();
