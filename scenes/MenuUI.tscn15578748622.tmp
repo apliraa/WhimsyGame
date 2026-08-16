@@ -175,9 +175,8 @@ layout_mode = 0
 offset_left = 440.0
 offset_top = 84.0
 offset_right = 576.0
-offset_bottom = 188.0
+offset_bottom = 212.0
 texture_normal = ExtResource("2_najbj")
-ignore_texture_size = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Play" unique_id=902098135]
 root_node = NodePath("../..")
@@ -198,10 +197,8 @@ layout_mode = 0
 offset_left = 440.0
 offset_top = 150.0
 offset_right = 568.0
-offset_bottom = 253.99988
-pivot_offset = Vector2(64, 128)
+offset_bottom = 278.00012
 texture_normal = ExtResource("2_najbj")
-ignore_texture_size = true
 
 [node name="Label" type="Label" parent="Credits" unique_id=55731733]
 layout_mode = 0

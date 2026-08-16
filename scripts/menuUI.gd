@@ -8,7 +8,19 @@ func _ready() -> void:
 		
 	pass 
 	
-func on_button_pressed(button: Button) -> void:
+func on_button_hover(button: TextureButton, is_hovered: bool) -> void:
+	#pega o animation node filho do texturebutton 
+	var anim_player: AnimationPlayer = button.get_node_or_null("AnimationPlayer")
+	
+	if not anim_player:
+		return
+		
+	if is_hovered:
+		anim_player.play("hover")
+	else:
+		anim_player.stop()
+
+func on_button_pressed(button: TextureButton) -> void:
 	match button.name:
 		#"Play": 
 			#var _game: bool = get_tree().change_scene_to_file("res://Scenes/Menu/Main.tscn")
@@ -19,9 +31,11 @@ func on_button_pressed(button: Button) -> void:
 		"Quit":
 			get_tree().quit()
 
-func mouse_interaction(button: Button, state: String) -> void:
+func mouse_interaction(button: TextureButton, state: String) -> void:
 	match state:
 		"exited":
 			button.modulate.a = 1
+			on_button_hover(button, false)
 		"entered":
 			button.modulate.a = 0.5
+			on_button_hover(button, true)
