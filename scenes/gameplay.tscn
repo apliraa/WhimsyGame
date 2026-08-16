@@ -27,11 +27,10 @@ seamless = true
 noise = SubResource("FastNoiseLite_cloud_d")
 seamless = true
 
-[sub_resource type="Gradient" id="Gradient_cloud_b"]
+[sub_resource type="Gradient" id="Gradient_bhmdk"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cloud_b"]
-gradient = SubResource("Gradient_cloud_b")
-fill = 2
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n3mp7"]
+gradient = SubResource("Gradient_bhmdk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cloud_b"]
 shader = ExtResource("22_cloud_shader")
@@ -42,12 +41,26 @@ shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_cloud_d")
 shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
 shader_parameter/center_pos = Vector2(0.5, 0.5)
 shader_parameter/position_impact = 0.75
-shader_parameter/color_gardient = SubResource("GradientTexture2D_cloud_b")
-shader_parameter/clear_radius = 0.55999998748288
-shader_parameter/fade_edge = 0.85999998077728
+shader_parameter/color_gardient = SubResource("GradientTexture2D_n3mp7")
+shader_parameter/clear_radius = 0.42999999038864
+shader_parameter/fade_edge = 1.0
 
 [node name="Gameplay" type="Node2D" unique_id=396620555]
 script = ExtResource("12_gamepad")
+
+[node name="Shader" type="CanvasLayer" parent="." unique_id=733548721]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Shader" unique_id=399952779]
+z_index = 50
+texture_filter = 1
+material = SubResource("ShaderMaterial_cloud_b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=219774997]
 visibility_layer = 4
@@ -186,12 +199,3 @@ script = ExtResource("21_mouse")
 [node name="PhaseTransitionTimer" type="Timer" parent="." unique_id=730722332]
 wait_time = 4.0
 one_shot = true
-
-[node name="Shader" type="CanvasLayer" parent="." unique_id=733548721]
-follow_viewport_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="Shader" unique_id=399952779]
-z_index = 100
-texture_filter = 1
-material = SubResource("ShaderMaterial_cloud_b")
-size_flags_horizontal = 4
