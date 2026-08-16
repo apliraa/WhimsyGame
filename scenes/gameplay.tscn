@@ -7,10 +7,15 @@
 [ext_resource type="PackedScene" path="res://scenes/cursor.tscn" id="13_cursor"]
 [ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="14_phase"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_butterfly.tscn" id="15_butterfly"]
+[ext_resource type="AudioStream" uid="uid://c4aaxetpqp3jy" path="res://assets/Sfx/dragon-studio-wind-rustling-grass-339094.wav" id="15_s5y6v"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_mushroom.tscn" id="16_mushroom"]
+[ext_resource type="AudioStream" uid="uid://bsyt77q11iaru" path="res://assets/Sfx/freesound_community-birds-chirping-75156.wav" id="16_w3w6i"]
+[ext_resource type="Script" uid="uid://bnycmagdqwvbd" path="res://scripts/audio_stream_player_2d.gd" id="17_pv71h"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_star.tscn" id="17_star"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_cloud.tscn" id="18_cloud"]
+[ext_resource type="AudioStream" uid="uid://27rae1lx3rpm" path="res://assets/Sfx/sspsurvival-sound-from-the-window-dog-barking-birds-winter-village-12370.wav" id="18_pv71h"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_duck.tscn" id="19_duck"]
+[ext_resource type="Script" uid="uid://co3u8q8dje02s" path="res://scripts/background_noise.gd" id="19_m6b5a"]
 [ext_resource type="PackedScene" path="res://scenes/outside_trigger_wide.tscn" id="20_outside"]
 [ext_resource type="Script" uid="uid://sewh0o0v2nqo" path="res://scripts/MouseController.cs" id="21_mouse"]
 [ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
@@ -199,3 +204,16 @@ script = ExtResource("21_mouse")
 [node name="PhaseTransitionTimer" type="Timer" parent="." unique_id=730722332]
 wait_time = 4.0
 one_shot = true
+
+[node name="Wind" type="AudioStreamPlayer2D" parent="." unique_id=1922789533]
+stream = ExtResource("15_s5y6v")
+volume_db = 10.0
+autoplay = true
+
+[node name="Birds" type="AudioStreamPlayer2D" parent="." unique_id=308246294]
+stream = ExtResource("16_w3w6i")
+script = ExtResource("17_pv71h")
+
+[node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="." unique_id=835191690]
+stream = ExtResource("18_pv71h")
+script = ExtResource("19_m6b5a")
