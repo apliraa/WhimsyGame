@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cfce3tgmq7qpe"]
+
+[ext_resource type="Texture2D" uid="uid://br2f6h50ra5ys" path="res://assets/sprites/Backgrounds/FlashBack-BackGround.png" id="1_nrjcq"]
+
+[node name="GameWin" type="Node2D" unique_id=813301029]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1042840666]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_nrjcq")
