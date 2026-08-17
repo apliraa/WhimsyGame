@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://2d62ruj0jftn"]
+[gd_scene format=3 uid="uid://cb8ju37jjruh4"]
 
 [ext_resource type="PackedScene" uid="uid://qgjsfwuiu5in" path="res://scenes/leaf.tscn" id="1_leaf_set"]
 [ext_resource type="Texture2D" uid="uid://dbei1wj7fnabd" path="res://assets/sprites/Backgrounds/Picnic-Background-Fundo.png" id="2_bhmdk"]
@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://7xkh0sm7u4do" path="res://scripts/PhaseController.cs" id="14_phase"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_butterfly.tscn" id="15_butterfly"]
 [ext_resource type="AudioStream" uid="uid://c4aaxetpqp3jy" path="res://assets/Sfx/dragon-studio-wind-rustling-grass-339094.wav" id="15_s5y6v"]
-[ext_resource type="PackedScene" uid="uid://jlfbysq5dhni" path="res://scenes/CreditsUI.tscn" id="16_25e7j"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_mushroom.tscn" id="16_mushroom"]
+[ext_resource type="PackedScene" uid="uid://cfce3tgmq7qpe" path="res://scenes/GameWin.tscn" id="16_t4x03"]
 [ext_resource type="AudioStream" uid="uid://bsyt77q11iaru" path="res://assets/Sfx/freesound_community-birds-chirping-75156.wav" id="16_w3w6i"]
 [ext_resource type="Script" uid="uid://bnycmagdqwvbd" path="res://scripts/audio_stream_player_2d.gd" id="17_pv71h"]
 [ext_resource type="PackedScene" path="res://scenes/form_target_star.tscn" id="17_star"]
@@ -172,7 +172,7 @@ position = Vector2(320, 180)
 
 [node name="DuckTarget" parent="FormTargets" unique_id=2048141997 instance=ExtResource("19_duck")]
 visible = false
-position = Vector2(320, 360)
+position = Vector2(320, 180)
 
 [node name="OutsideTriggers" type="Node2D" parent="." unique_id=1247397993]
 visible = false
@@ -216,8 +216,8 @@ position = Vector2(640, 360)
 
 [node name="PhaseController" type="Node" parent="." unique_id=1301799153 node_paths=PackedStringArray("timeCycle")]
 script = ExtResource("14_phase")
-GameWinScene = ExtResource("16_25e7j")
-timeCycle = NodePath("../DayShader/ColorRect")
+GameWinScene = ExtResource("16_t4x03")
+timeCycle = NodePath("../Shader/ColorRect")
 
 [node name="MouseController" type="Node" parent="." unique_id=1804720275]
 script = ExtResource("21_mouse")
