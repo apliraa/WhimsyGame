@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpcdjxw8mc04h"]
 
 [ext_resource type="Script" uid="uid://dv1eblwhjkcyk" path="res://scripts/SceneSwitcher.cs" id="1_ssicv"]
+[ext_resource type="AudioStream" uid="uid://cpa00v4e0p327" path="res://assets/Songs/musica-jam.ogg" id="2_music"]
 
 [node name="SceneSwitcher" type="CanvasLayer" unique_id=1024477370 node_paths=PackedStringArray("Rect")]
 script = ExtResource("1_ssicv")
@@ -13,3 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_music")
+autoplay = true
