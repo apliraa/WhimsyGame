@@ -206,7 +206,7 @@ public partial class PhaseController : Node
 		//var timeCycle = GetNodeOrNull<DayShader>("DayShader/ColorRect");
 		if (timeCycle != null)
 		{
-			timeCycle.SkipTime(0.25f, 2.0f);
+			timeCycle.SkipTime(0.2f, 2.0f);
 		}
 		else
 		{

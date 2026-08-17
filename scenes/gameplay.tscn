@@ -25,8 +25,8 @@
 [ext_resource type="Shader" uid="uid://bm3u1nfb4wwfw" path="res://shaders/cloudShader.gdshader" id="22_cloud_shader"]
 
 [sub_resource type="Gradient" id="Gradient_25e7j"]
-offsets = PackedFloat32Array(0, 0.28723404, 0.61702126, 1)
-colors = PackedColorArray(0.9372549, 0.9137255, 1, 1, 0.9607843, 0.94509804, 0.8117647, 1, 1, 0.8862745, 0.34901962, 1, 1, 0.5372549, 0, 1)
+offsets = PackedFloat32Array(0, 0.28723404, 0.44680852, 0.61702126, 1)
+colors = PackedColorArray(0.9372549, 0.9137255, 1, 1, 0.9607843, 0.94509804, 0.8117647, 1, 0.97975963, 0.91663504, 0.58785576, 1, 1, 0.8862745, 0.34901962, 1, 1, 0.5372549, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mesn4"]
 gradient = SubResource("Gradient_25e7j")
